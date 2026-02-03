@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>MTZ Automations | Agencia de Automatización e IA para Empresas</title>
+    <title>MTZ Automations | Agencia de Automatización e IA</title>
     <meta name="description" content="Especialistas en automatización de procesos, integración de IA y diseño web estratégico. Ahorra tiempo y escala tu facturación con MTZ Automations.">
     <meta name="keywords" content="agencia automatización, automatización de procesos, n8n, inteligencia artificial empresas, diseño web estratégico, consultoría digital">
     <meta name="author" content="MTZ Automations">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mtzautomations.com"> <meta property="og:type" content="website">
+    <link rel="canonical" href="https://mtzautomations.com"> 
+    <meta property="og:type" content="website">
     <meta property="og:title" content="MTZ Automations | Automatiza tu Negocio con IA">
     <meta property="og:description" content="Creamos ecosistemas digitales que automatizan procesos y capturan clientes mientras tú recuperas tu tiempo.">
-    <meta property="og:image" content="ruta-a-tu-imagen-preview.jpg"> <meta property="og:url" content="https://mtzautomations.com">
+    <meta property="og:url" content="https://mtzautomations.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <script type="application/ld+json">
     {
@@ -35,15 +36,19 @@
     </script>
 
     <style>
-        /* --- VARIABLES & RESET --- */
+        /* --- VARIABLES & RESET (REBRANDING AI) --- */
         :root {
-            --bg-color: #050505;
-            --card-bg: rgba(20, 20, 20, 0.6);
-            --accent: #2bdeb3; 
-            --accent-glow: rgba(43, 222, 179, 0.4); 
+            --bg-color: #030305; /* Negro profundo ligeramente azulado */
+            --card-bg: rgba(20, 20, 30, 0.6);
+            
+            /* NUEVA PALETA IA: Violeta Eléctrico + Azul Cian */
+            --accent: #8b5cf6; /* Violeta principal */
+            --accent-glow: rgba(139, 92, 246, 0.4); 
+            --accent-secondary: #06b6d4; /* Cian para degradados */
+            
             --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --border: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -56,26 +61,34 @@
             line-height: 1.6;
         }
 
-        /* --- FONDO AMBIENTAL --- */
+        /* --- FONDO AMBIENTAL (Universo IA) --- */
         .ambient-light {
-            position: fixed; top: -10%; left: -10%; width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(43, 222, 179, 0.25), transparent 65%); 
-            border-radius: 50%; z-index: -1; opacity: 0.8; 
-            animation: floatLight 12s infinite alternate ease-in-out;
-            pointer-events: none; /* Mejora rendimiento */
+            position: fixed; top: -15%; left: -10%; width: 80vw; height: 80vw;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 60%); 
+            border-radius: 50%; z-index: -1; opacity: 0.6; 
+            animation: floatLight 15s infinite alternate ease-in-out;
+            pointer-events: none;
         }
         .ambient-light.two { 
-            top: auto; bottom: -10%; left: auto; right: -5%; 
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 65%);
-            animation-delay: 6s; opacity: 0.7;
+            top: auto; bottom: -20%; left: auto; right: -10%; 
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.12), transparent 60%);
+            animation-delay: 5s; opacity: 0.5;
         }
 
-        @keyframes floatLight { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, 20px) scale(1.05); } }
+        @keyframes floatLight { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(20px, 30px) scale(1.1); } }
 
         /* --- UTILIDADES --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        /* CORRECCIÓN: Opacity 1 para evitar pantalla negra al probar localmente */
+        .reveal { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .highlight { color: var(--accent); }
+        
+        /* Texto degradado estilo IA */
+        .highlight { 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
 
         /* --- HERO --- */
         header {
@@ -85,83 +98,90 @@
         }
 
         .agency-badge {
-            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px;
-            color: var(--text-muted); margin-bottom: 25px; border: 1px solid var(--border);
-            padding: 8px 25px; border-radius: 50px; background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px;
+            color: var(--accent-secondary); margin-bottom: 25px; border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 8px 25px; border-radius: 50px; background: rgba(6, 182, 212, 0.05);
+            backdrop-filter: blur(10px); box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
         }
 
         h1 {
-            /* PC: Ajustado para 1 línea + salto */
-            font-size: 4rem; 
-            font-weight: 700; line-height: 1.1;
+            font-size: 4.5rem; 
+            font-weight: 800; line-height: 1.05;
             margin-bottom: 25px;
-            background: linear-gradient(to bottom right, #ffffff, #b3b3b3);
+            letter-spacing: -1px;
+            background: linear-gradient(to bottom, #ffffff 40%, #94a3b8 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             max-width: 1200px; width: 100%;
         }
 
         .subtitle {
-            font-size: 1.2rem; color: var(--text-muted); max-width: 700px; 
+            font-size: 1.25rem; color: var(--text-muted); max-width: 700px; 
             margin: 0 auto 50px auto; 
             font-weight: 300;
         }
 
         .cta-btn {
-            padding: 18px 40px; background: var(--text-main); color: #000;
-            text-decoration: none; font-weight: bold; border-radius: 4px;
-            transition: all 0.3s ease; display: inline-block; letter-spacing: 1px;
+            padding: 18px 45px; 
+            background: linear-gradient(90deg, var(--accent) 0%, #7c3aed 100%);
+            color: #fff;
+            text-decoration: none; font-weight: 600; border-radius: 50px;
+            transition: all 0.3s ease; display: inline-block; letter-spacing: 0.5px;
             font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
         }
-        .cta-btn:hover { background: var(--accent); box-shadow: 0 5px 30px var(--accent-glow); transform: translateY(-3px); }
+        .cta-btn:hover { 
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.5); 
+            transform: translateY(-3px) scale(1.02); 
+        }
 
         /* --- SERVICIOS --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px; }
-        .section-title { font-size: 2.2rem; margin-bottom: 60px; text-align: left; border-left: 4px solid var(--accent); padding-left: 20px; }
+        .section-title { 
+            font-size: 2.2rem; margin-bottom: 60px; text-align: left; 
+            border-left: 4px solid var(--accent); padding-left: 20px; 
+            color: #fff;
+        }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .card {
             background: var(--card-bg); padding: 40px; border: 1px solid var(--border);
-            transition: 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(5px);
+            border-radius: 16px;
+            transition: 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(10px);
         }
-        .card:hover { transform: translateY(-7px); border-color: var(--accent); }
+        .card:hover { 
+            transform: translateY(-7px); 
+            border-color: var(--accent); 
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.2);
+        }
         .card h3 { margin-bottom: 15px; font-size: 1.4rem; color: #fff; }
         .card p { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
 
         /* --- PORTFOLIO --- */
         .project-showcase {
-            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-            border-radius: 12px; overflow: hidden; position: relative;
+            background: rgba(255,255,255,0.01); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden; position: relative;
         }
         
-        /* INDICADOR DE DESLIZAR */
         .swipe-hint {
-            position: absolute;
-            bottom: 20px; right: 20px; 
-            background: rgba(0,0,0,0.7);
-            color: var(--accent);
-            padding: 6px 15px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            border: 1px solid var(--accent);
-            pointer-events: none; 
-            z-index: 10;
+            position: absolute; bottom: 20px; right: 20px; 
+            background: rgba(0,0,0,0.8); color: var(--accent-secondary);
+            padding: 6px 15px; border-radius: 30px;
+            font-size: 0.75rem; font-weight: bold;
+            border: 1px solid var(--accent-secondary);
+            pointer-events: none; z-index: 10;
             animation: pulseSwipe 2s infinite ease-in-out;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
         @keyframes pulseSwipe {
             0% { transform: translateX(0); opacity: 0.8; }
-            50% { transform: translateX(-5px); opacity: 1; box-shadow: 0 0 10px var(--accent-glow); }
+            50% { transform: translateX(-5px); opacity: 1; box-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
             100% { transform: translateX(0); opacity: 0.8; }
         }
 
         .gallery-container {
             display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
-            height: 450px; 
-            align-items: center; -webkit-overflow-scrolling: touch;
+            height: 450px; align-items: center; -webkit-overflow-scrolling: touch;
         }
         .gallery-container::-webkit-scrollbar { display: none; }
         
@@ -172,11 +192,13 @@
             overflow: hidden; 
         }
         
+        /* Imágenes con filtro sutil para que encajen */
         .gallery-item img { 
             width: 100%; height: 100%; object-fit: cover; object-position: center center; 
+            filter: brightness(0.8) contrast(1.1); transition: 0.5s;
         }
+        .gallery-item:hover img { filter: brightness(1); transform: scale(1.02); }
         
-        /* Zona de textos */
         .project-details-container { position: relative; min-height: 280px; } 
         .project-details { 
             padding: 40px; position: absolute; top:0; left:0; width: 100%;
@@ -186,73 +208,78 @@
         .project-details.active-details { opacity: 1; pointer-events: auto; z-index: 2; }
 
         .tag-list { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;}
-        .tag { font-size: 0.75rem; border: 1px solid var(--accent); color: var(--accent); padding: 5px 12px; border-radius: 20px; text-transform: uppercase; }
+        .tag { 
+            font-size: 0.7rem; border: 1px solid var(--accent); color: var(--accent); 
+            padding: 6px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px;
+            background: rgba(139, 92, 246, 0.1);
+        }
         
         .demo-link {
             display: inline-flex; align-items: center; gap: 10px;
             color: #fff; text-decoration: none; font-weight: bold; 
             margin-top: 25px; 
-            border-bottom: 1px solid var(--accent); padding-bottom: 5px; 
+            border-bottom: 1px solid var(--accent-secondary); padding-bottom: 5px; 
             transition: 0.3s;
         }
-        .demo-link:hover { color: var(--accent); border-color: transparent; }
+        .demo-link:hover { color: var(--accent-secondary); border-color: transparent; }
 
         /* --- CONTACTO --- */
         .contact-section { text-align: center; max-width: 600px; margin: 0 auto; }
+        
         input, textarea, select {
             width: 100%; padding: 18px; margin-bottom: 15px;
             background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-            color: white; font-family: 'Outfit', sans-serif; transition: 0.3s; border-radius: 4px;
+            color: white; font-family: 'Outfit', sans-serif; transition: 0.3s; border-radius: 8px;
+            font-size: 1rem;
         }
-        input:focus, textarea:focus, select:focus { border-color: var(--accent); outline: none; background: rgba(0,0,0,0.2); }
-        select { appearance: none; color: #fff; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232bdeb3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 15px top 50%; background-size: 12px auto; }
+        
+        input:focus, textarea:focus, select:focus { 
+            border-color: var(--accent); outline: none; 
+            background: rgba(139, 92, 246, 0.05); 
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+        }
+
+        /* SVG del Select actualizado a Violeta */
+        select { 
+            appearance: none; color: #fff; 
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238b5cf6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); 
+            background-repeat: no-repeat; background-position: right 15px top 50%; background-size: 12px auto; 
+        }
         select option { background: #000; color: #fff; }
 
         button.submit-btn {
-            width: 100%; padding: 18px; background: var(--accent); color: #000;
+            width: 100%; padding: 18px; 
+            background: var(--accent); color: #fff;
             border: none; font-weight: bold; cursor: pointer; font-size: 1rem;
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; border-radius: 4px;
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.2);
         }
-        button.submit-btn:hover { background: #fff; box-shadow: 0 5px 20px var(--accent-glow); }
+        button.submit-btn:hover { 
+            background: #fff; color: #000;
+            box-shadow: 0 5px 30px rgba(255, 255, 255, 0.4); 
+        }
 
         /* --- FOOTER --- */
         footer {
             text-align: center; padding: 60px 20px; color: #555; font-size: 0.9rem;
             border-top: 1px solid var(--border); margin-top: 80px;
-            background: rgba(0,0,0,0.2);
+            background: linear-gradient(to top, rgba(139, 92, 246, 0.05), transparent);
         }
         .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 30px; }
         .footer-links a { color: #777; text-decoration: none; transition: 0.3s; font-size: 0.8rem;}
         .footer-links a:hover { color: var(--accent); }
 
         /* =========================================
-           📱 MÓVIL (AJUSTES TÍTULO & LAYOUT)
+           📱 MÓVIL (AJUSTES)
            ========================================= */
         @media (max-width: 768px) {
-            
-            /* TÍTULO: Letra un poco más pequeña para asegurar el salto correcto */
-            h1 { 
-                font-size: 1.7rem; 
-                line-height: 1.3; 
-                padding: 0 5px; 
-            }
+            h1 { font-size: 2.2rem; line-height: 1.2; padding: 0 5px; }
             .subtitle { font-size: 1rem; margin-bottom: 30px; padding: 0 10px; }
-
-            .cta-btn { padding: 12px 25px; font-size: 0.9rem; }
+            .cta-btn { padding: 14px 30px; font-size: 0.9rem; width: 100%; }
             .section-title { font-size: 1.8rem; margin-bottom: 40px; }
-
             .gallery-container { height: 250px; } 
             .project-details-container { min-height: 320px; }
             .project-details { padding: 20px; }
-            .project-details h3 { font-size: 1.2rem; margin-bottom: 10px; }
-            .project-details p { font-size: 0.85rem; line-height: 1.4; margin-bottom: 10px; }
-
-            .tag { font-size: 0.65rem; padding: 4px 8px; }
-            .demo-link { margin-top: 10px; font-size: 0.85rem; }
-
-            .contact-section h2.section-title { font-size: 1.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-            
-            .swipe-hint { bottom: 10px; right: 10px; padding: 4px 10px; font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -271,35 +298,35 @@
     </header>
 
     <section class="container reveal">
-        <h2 class="section-title">Servicios de Automatización</h2>
+        <h2 class="section-title">Servicios de Inteligencia</h2>
         <div class="grid">
             <div class="card">
                 <h3>⚡ Diseño Web Estratégico</h3>
                 <p>No solo webs bonitas. Creamos herramientas de venta optimizadas para convertir visitantes en clientes potenciales de forma automática.</p>
             </div>
             <div class="card">
-                <h3>⚙️ Automatización de Procesos</h3>
-                <p>Eliminamos el trabajo manual. Conectamos tu CRM, Email y bases de datos con n8n para que tu negocio funcione en piloto automático.</p>
+                <h3>⚙️ Automatización (n8n)</h3>
+                <p>Eliminamos el trabajo manual. Conectamos tu CRM, Email y bases de datos para que tu negocio funcione en piloto automático 24/7.</p>
             </div>
             <div class="card">
-                <h3>🤖 Integración de IA Real</h3>
-                <p>Implementamos Inteligencia Artificial para filtrar leads, redactar respuestas y analizar datos. Chatbots y agentes de IA a tu servicio.</p>
+                <h3>🤖 Agentes IA y Chatbots</h3>
+                <p>Implementamos cerebros digitales que filtran leads, agendan citas y analizan datos. Tu empresa atendida por IA real.</p>
             </div>
         </div>
     </section>
 
     <section class="container reveal">
-        <h2 class="section-title">Casos de Éxito</h2>
+        <h2 class="section-title">Tecnología en Acción</h2>
         
         <div class="project-showcase">
             <div class="swipe-hint">← Desliza →</div>
 
             <div class="gallery-container">
                 <div class="gallery-item" data-slide="1">
-                    <img src="web.png" alt="Diseño web estilo terminal para agencia tecnológica MTZ">
+                    <img src="glitch.png" alt="Diseño web estilo terminal para agencia tecnológica MTZ">
                 </div>
                 <div class="gallery-item" data-slide="2">
-                    <img src="sistema.jpg" alt="Flujo de automatización n8n backend y gestión de datos">
+                    <img src="trabajos.png" alt="Flujo de automatización n8n backend y gestión de datos">
                 </div>
             </div>
 
@@ -318,8 +345,8 @@
 
                 <div class="project-details" id="details-2">
                      <div class="tag-list">
-                        <span class="tag" style="border-color: #3b82f6; color: #3b82f6;">Backend</span>
-                        <span class="tag" style="border-color: #3b82f6; color: #3b82f6;">Sistemas n8n</span>
+                        <span class="tag" style="border-color: #06b6d4; color: #06b6d4;">Backend n8n</span>
+                        <span class="tag" style="border-color: #06b6d4; color: #06b6d4;">OpenAI API</span>
                     </div>
                     <h3>El Motor: Automatización</h3>
                     <p style="color: var(--text-muted);">
@@ -333,10 +360,13 @@
     <section class="container reveal" id="contacto">
         <div class="contact-section">
             <h2 class="section-title" style="text-align: center; border:none; padding:0;">Automatiza tu Negocio</h2>
-            <p class="subtitle" style="margin: 0 auto 40px auto;">Reserva tu auditoría de automatización gratuita. Sin compromiso.</p>
+            <p class="subtitle" style="margin: 0 auto 40px auto;">Déjanos tus datos. Te llamaremos si vemos potencial de escala.</p>
             
             <form id="contactForm">
                 <input type="text" id="nombre" placeholder="Tu Nombre / Empresa" required aria-label="Nombre">
+                
+                <input type="tel" id="telefono" placeholder="Teléfono (con prefijo)" required aria-label="Teléfono" pattern="[0-9\+\-\s]{9,20}">
+                
                 <input type="email" id="email" placeholder="Tu Correo Electrónico" required aria-label="Email">
                 
                 <select id="servicio" required aria-label="Servicio">
@@ -352,11 +382,11 @@
                 <div style="text-align: left; font-size: 0.8rem; color: #999; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" id="legal-check" required style="width: auto; margin-top: 5px; cursor: pointer; accent-color: var(--accent);">
                     <label for="legal-check" style="cursor: pointer;">
-                        He leído y acepto la <a href="privacidad.html" style="color: var(--accent); text-decoration: none;">Política de Privacidad</a> y los <a href="legal.html" style="color: var(--accent); text-decoration: none;">Términos y Condiciones</a>.
+                        He leído y acepto la <a href="privacidad.html" style="color: var(--accent); text-decoration: none;">Política de Privacidad</a>. Acepto recibir comunicaciones comerciales y de seguimiento vía email o teléfono.
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">ENVIAR FORMULARIO</button>
+                <button type="submit" class="submit-btn" id="submitBtn">ENVIAR SOLICITUD</button>
             </form>
         </div>
     </section>
@@ -406,6 +436,7 @@
 
             const formData = {
                 nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value, 
                 email: document.getElementById('email').value,
                 servicio: document.getElementById('servicio').value,
                 mensaje: document.getElementById('mensaje').value,
@@ -421,7 +452,7 @@
                 });
 
                 if (response.ok) {
-                    btn.innerText = '¡SOLICITUD ENVIADA!';
+                    btn.innerText = '¡RECIBIDO!';
                     btn.style.background = '#ffffff'; 
                     btn.style.color = '#000000';
                     document.getElementById('contactForm').reset();
@@ -429,7 +460,7 @@
                     setTimeout(() => {
                         btn.innerText = originalText;
                         btn.style.background = ''; 
-                        btn.style.color = '';
+                        btn.style.color = '#ffffff';
                         btn.style.opacity = '1';
                         btn.disabled = false;
                     }, 4000);
