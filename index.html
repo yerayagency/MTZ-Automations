@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>MTZ Automations | Agencia de Automatización e IA</title>
-    <meta name="description" content="Especialistas en automatización de procesos, integración de IA y diseño web estratégico. Ahorra tiempo y escala tu facturación con MTZ Automations.">
-    <meta name="keywords" content="agencia automatización, automatización de procesos, n8n, inteligencia artificial empresas, diseño web estratégico, consultoría digital">
+    <title>MTZ Automations | Agencia de Automatización y Soluciones Digitales</title>
+    <meta name="description" content="Transformamos empresas con Automatización de Procesos (n8n), Diseño Web Estratégico y Tecnología. Escala tu facturación sin aumentar tu carga de trabajo.">
+    <meta name="keywords" content="agencia automatización españa, expertos n8n, soluciones digitales empresas, diseño web conversión, automatización de procesos de negocio, consultoría tecnológica">
     <meta name="author" content="MTZ Automations">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://mtzautomations.com"> 
+    
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MTZ Automations | Automatiza tu Negocio con IA">
-    <meta property="og:description" content="Creamos ecosistemas digitales que automatizan procesos y capturan clientes mientras tú recuperas tu tiempo.">
+    <meta property="og:title" content="MTZ Automations | Automatiza tu Negocio">
+    <meta property="og:description" content="Tu negocio operando al 100% sin ti. Soluciones digitales que recuperan tu tiempo.">
     <meta property="og:url" content="https://mtzautomations.com">
+    <meta property="og:image" content="https://mtzautomations.com/glitch.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
@@ -23,7 +25,7 @@
       "@type": "ProfessionalService",
       "name": "MTZ Automations",
       "image": "https://mtzautomations.com/logo.png",
-      "@id": "",
+      "@id": "https://mtzautomations.com",
       "url": "https://mtzautomations.com",
       "telephone": "",
       "priceRange": "$$",
@@ -31,21 +33,25 @@
         "@type": "PostalAddress",
         "addressCountry": "ES"
       },
-      "description": "Agencia especializada en automatización de procesos con n8n e Inteligencia Artificial para pymes y emprendedores."
+      "description": "Agencia especializada en soluciones digitales y automatización de procesos para pymes.",
+      "knowsAbout": ["Automatización", "n8n", "Diseño Web", "Digitalización"],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
     }
     </script>
 
     <style>
-        /* --- VARIABLES & RESET (REBRANDING AI) --- */
+        /* --- VARIABLES & RESET --- */
         :root {
-            --bg-color: #030305; /* Negro profundo ligeramente azulado */
+            --bg-color: #030305;
             --card-bg: rgba(20, 20, 30, 0.6);
-            
-            /* NUEVA PALETA IA: Violeta Eléctrico + Azul Cian */
-            --accent: #8b5cf6; /* Violeta principal */
+            --accent: #8b5cf6; /* Violeta */
             --accent-glow: rgba(139, 92, 246, 0.4); 
-            --accent-secondary: #06b6d4; /* Cian para degradados */
-            
+            --accent-secondary: #06b6d4; /* Cian */
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
@@ -61,7 +67,7 @@
             line-height: 1.6;
         }
 
-        /* --- FONDO AMBIENTAL (Universo IA) --- */
+        /* --- FONDO AMBIENTAL --- */
         .ambient-light {
             position: fixed; top: -15%; left: -10%; width: 80vw; height: 80vw;
             background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 60%); 
@@ -78,15 +84,12 @@
         @keyframes floatLight { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(20px, 30px) scale(1.1); } }
 
         /* --- UTILIDADES --- */
-        /* CORRECCIÓN: Opacity 1 para evitar pantalla negra al probar localmente */
         .reveal { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Texto degradado estilo IA */
         .highlight { 
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             font-weight: 800;
         }
 
@@ -105,10 +108,8 @@
         }
 
         h1 {
-            font-size: 4.5rem; 
-            font-weight: 800; line-height: 1.05;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
+            font-size: 4.5rem; font-weight: 800; line-height: 1.05;
+            margin-bottom: 25px; letter-spacing: -1px;
             background: linear-gradient(to bottom, #ffffff 40%, #94a3b8 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             max-width: 1200px; width: 100%;
@@ -116,41 +117,37 @@
 
         .subtitle {
             font-size: 1.25rem; color: var(--text-muted); max-width: 700px; 
-            margin: 0 auto 50px auto; 
-            font-weight: 300;
+            margin: 0 auto 50px auto; font-weight: 300;
         }
 
         .cta-btn {
             padding: 18px 45px; 
             background: linear-gradient(90deg, var(--accent) 0%, #7c3aed 100%);
-            color: #fff;
-            text-decoration: none; font-weight: 600; border-radius: 50px;
+            color: #fff; text-decoration: none; font-weight: 600; border-radius: 50px;
             transition: all 0.3s ease; display: inline-block; letter-spacing: 0.5px;
-            font-size: 1rem;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            font-size: 1rem; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
         }
         .cta-btn:hover { 
             box-shadow: 0 15px 40px rgba(124, 58, 237, 0.5); 
             transform: translateY(-3px) scale(1.02); 
         }
 
-        /* --- SERVICIOS --- */
+        /* --- SECCIONES --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px; }
+        
         .section-title { 
             font-size: 2.2rem; margin-bottom: 60px; text-align: left; 
-            border-left: 4px solid var(--accent); padding-left: 20px; 
-            color: #fff;
+            border-left: 4px solid var(--accent); padding-left: 20px; color: #fff;
         }
+        
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .card {
             background: var(--card-bg); padding: 40px; border: 1px solid var(--border);
-            border-radius: 16px;
-            transition: 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(10px);
+            border-radius: 16px; transition: 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(10px);
         }
         .card:hover { 
-            transform: translateY(-7px); 
-            border-color: var(--accent); 
+            transform: translateY(-7px); border-color: var(--accent); 
             box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.2);
         }
         .card h3 { margin-bottom: 15px; font-size: 1.4rem; color: #fff; }
@@ -167,12 +164,9 @@
             background: rgba(0,0,0,0.8); color: var(--accent-secondary);
             padding: 6px 15px; border-radius: 30px;
             font-size: 0.75rem; font-weight: bold;
-            border: 1px solid var(--accent-secondary);
-            pointer-events: none; z-index: 10;
-            animation: pulseSwipe 2s infinite ease-in-out;
-            text-transform: uppercase; letter-spacing: 1px;
+            border: 1px solid var(--accent-secondary); pointer-events: none; z-index: 10;
+            animation: pulseSwipe 2s infinite ease-in-out; text-transform: uppercase; letter-spacing: 1px;
         }
-
         @keyframes pulseSwipe {
             0% { transform: translateX(0); opacity: 0.8; }
             50% { transform: translateX(-5px); opacity: 1; box-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
@@ -188,11 +182,9 @@
         .gallery-item {
             flex: 0 0 100%; scroll-snap-align: center; height: 100%;
             display: flex; justify-content: center; align-items: center;
-            position: relative; border-right: 1px solid #1a1a1a; background: #0a0a0a;
-            overflow: hidden; 
+            position: relative; border-right: 1px solid #1a1a1a; background: #0a0a0a; overflow: hidden; 
         }
         
-        /* Imágenes con filtro sutil para que encajen */
         .gallery-item img { 
             width: 100%; height: 100%; object-fit: cover; object-position: center center; 
             filter: brightness(0.8) contrast(1.1); transition: 0.5s;
@@ -217,8 +209,7 @@
         .demo-link {
             display: inline-flex; align-items: center; gap: 10px;
             color: #fff; text-decoration: none; font-weight: bold; 
-            margin-top: 25px; 
-            border-bottom: 1px solid var(--accent-secondary); padding-bottom: 5px; 
+            margin-top: 25px; border-bottom: 1px solid var(--accent-secondary); padding-bottom: 5px; 
             transition: 0.3s;
         }
         .demo-link:hover { color: var(--accent-secondary); border-color: transparent; }
@@ -229,17 +220,14 @@
         input, textarea, select {
             width: 100%; padding: 18px; margin-bottom: 15px;
             background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-            color: white; font-family: 'Outfit', sans-serif; transition: 0.3s; border-radius: 8px;
-            font-size: 1rem;
+            color: white; font-family: 'Outfit', sans-serif; transition: 0.3s; border-radius: 8px; font-size: 1rem;
         }
-        
         input:focus, textarea:focus, select:focus { 
-            border-color: var(--accent); outline: none; 
-            background: rgba(139, 92, 246, 0.05); 
+            border-color: var(--accent); outline: none; background: rgba(139, 92, 246, 0.05); 
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
         }
 
-        /* SVG del Select actualizado a Violeta */
+        /* Select styling */
         select { 
             appearance: none; color: #fff; 
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238b5cf6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); 
@@ -248,15 +236,13 @@
         select option { background: #000; color: #fff; }
 
         button.submit-btn {
-            width: 100%; padding: 18px; 
-            background: var(--accent); color: #fff;
+            width: 100%; padding: 18px; background: var(--accent); color: #fff;
             border: none; font-weight: bold; cursor: pointer; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; border-radius: 8px;
             box-shadow: 0 5px 20px rgba(139, 92, 246, 0.2);
         }
         button.submit-btn:hover { 
-            background: #fff; color: #000;
-            box-shadow: 0 5px 30px rgba(255, 255, 255, 0.4); 
+            background: #fff; color: #000; box-shadow: 0 5px 30px rgba(255, 255, 255, 0.4); 
         }
 
         /* --- FOOTER --- */
@@ -269,9 +255,6 @@
         .footer-links a { color: #777; text-decoration: none; transition: 0.3s; font-size: 0.8rem;}
         .footer-links a:hover { color: var(--accent); }
 
-        /* =========================================
-           📱 MÓVIL (AJUSTES)
-           ========================================= */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; line-height: 1.2; padding: 0 5px; }
             .subtitle { font-size: 1rem; margin-bottom: 30px; padding: 0 10px; }
@@ -298,7 +281,7 @@
     </header>
 
     <section class="container reveal">
-        <h2 class="section-title">Servicios de Inteligencia</h2>
+        <h2 class="section-title">Soluciones Digitales</h2>
         <div class="grid">
             <div class="card">
                 <h3>⚡ Diseño Web Estratégico</h3>
@@ -309,8 +292,8 @@
                 <p>Eliminamos el trabajo manual. Conectamos tu CRM, Email y bases de datos para que tu negocio funcione en piloto automático 24/7.</p>
             </div>
             <div class="card">
-                <h3>🤖 Agentes IA y Chatbots</h3>
-                <p>Implementamos cerebros digitales que filtran leads, agendan citas y analizan datos. Tu empresa atendida por IA real.</p>
+                <h3>🤖 Agentes Inteligentes</h3>
+                <p>Implementamos cerebros digitales que filtran leads, agendan citas y analizan datos. Tu empresa atendida por tecnología real.</p>
             </div>
         </div>
     </section>
@@ -323,10 +306,10 @@
 
             <div class="gallery-container">
                 <div class="gallery-item" data-slide="1">
-                    <img src="glitch.png" alt="Diseño web estilo terminal para agencia tecnológica MTZ">
+                    <img src="glitch.png" alt="Diseño web estilo terminal futurista" loading="lazy">
                 </div>
                 <div class="gallery-item" data-slide="2">
-                    <img src="trabajos.png" alt="Flujo de automatización n8n backend y gestión de datos">
+                    <img src="trabajos.png" alt="Workflow de automatización en n8n" loading="lazy">
                 </div>
             </div>
 
@@ -338,7 +321,7 @@
                     </div>
                     <h3>El Resultado: Experiencia UX</h3>
                     <p style="color: var(--text-muted);">
-                        Una interfaz diseñada para romper patrones. La estética "terminal" aumenta la retención y convierte una simple suscripción en una experiencia memorable para el usuario.
+                        Una interfaz diseñada para romper patrones. La estética "terminal" aumenta la retención y convierte una simple suscripción en una experiencia memorable.
                     </p>
                     <a href="https://yerayagency.github.io/glitch/" target="_blank" class="demo-link" rel="nofollow">Ver Demo en Vivo ↗</a>
                 </div>
@@ -346,11 +329,11 @@
                 <div class="project-details" id="details-2">
                      <div class="tag-list">
                         <span class="tag" style="border-color: #06b6d4; color: #06b6d4;">Backend n8n</span>
-                        <span class="tag" style="border-color: #06b6d4; color: #06b6d4;">OpenAI API</span>
+                        <span class="tag" style="border-color: #06b6d4; color: #06b6d4;">Integración API</span>
                     </div>
                     <h3>El Motor: Automatización</h3>
                     <p style="color: var(--text-muted);">
-                        Lo que nadie ve. Un flujo complejo que valida emails, genera contenido único con IA, formatea el código y notifica al administrador en tiempo real mediante webhooks.
+                        Lo que nadie ve. Un flujo complejo que valida emails, genera contenido, formatea el código y notifica al administrador en tiempo real mediante webhooks.
                     </p>
                 </div>
             </div>
@@ -382,7 +365,7 @@
                 <div style="text-align: left; font-size: 0.8rem; color: #999; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" id="legal-check" required style="width: auto; margin-top: 5px; cursor: pointer; accent-color: var(--accent);">
                     <label for="legal-check" style="cursor: pointer;">
-                        He leído y acepto la <a href="privacidad.html" style="color: var(--accent); text-decoration: none;">Política de Privacidad</a>. Acepto recibir comunicaciones comerciales y de seguimiento vía email o teléfono.
+                        He leído y acepto la <a href="privacidad.html" style="color: var(--accent); text-decoration: none;">Política de Privacidad</a>. Acepto recibir comunicaciones comerciales.
                     </label>
                 </div>
 
@@ -393,7 +376,7 @@
 
     <footer>
         © 2026 MTZ Automations.<br>
-        Agencia de automatización de procesos e Inteligencia Artificial.
+        Agencia de automatización de procesos y soluciones digitales.
         
         <div class="footer-links">
             <a href="legal.html">Términos</a>
@@ -402,7 +385,7 @@
     </footer>
 
     <script>
-        // === INTERSECTION OBSERVER (Animaciones al hacer scroll) ===
+        // === INTERSECTION OBSERVER ===
         const observerReveal = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
@@ -423,13 +406,12 @@
         }, { root: document.querySelector('.gallery-container'), threshold: 0.6 });
         galleryItems.forEach(item => observerSlider.observe(item));
 
-        // === FORM SUBMISSION (Conexión a n8n) ===
+        // === FORM SUBMISSION ===
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerText;
             
-            // Feedback visual inmediato
             btn.innerText = 'ENVIANDO...';
             btn.style.opacity = '0.7';
             btn.disabled = true;
@@ -444,7 +426,7 @@
             };
 
             try {
-                // TU WEBHOOK DE n8n
+                // TU WEBHOOK
                 const response = await fetch('https://yerayagency.app.n8n.cloud/webhook/Portfolio', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
