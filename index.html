@@ -8,43 +8,22 @@
     <meta name="keywords" content="agencia automatización españa, expertos n8n, soluciones digitales empresas, diseño web conversión, automatización de procesos de negocio">
     <meta name="author" content="MTZ Automations">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mtzautomations.com">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="MTZ Automations | Automatiza tu Negocio">
-    <meta property="og:description" content="Tu negocio operando al 100% sin ti. Soluciones digitales que recuperan tu tiempo.">
-    <meta property="og:url" content="https://mtzautomations.com">
-    <meta property="og:image" content="https://mtzautomations.com/glitch.png">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- Recuperamos Syne para titulares (carácter) y DM Sans para legibilidad -->
+    <!-- Recuperamos Syne para titulares y DM Sans para lectura -->
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "MTZ Automations",
-      "image": "https://mtzautomations.com/logo.png",
-      "@id": "https://mtzautomations.com",
-      "url": "https://mtzautomations.com",
-      "priceRange": "$$",
-      "address": { "@type": "PostalAddress", "addressCountry": "ES" },
-      "description": "Agencia especializada en automatización de procesos e IA para pymes.",
-      "knowsAbout": ["Automatización", "n8n", "Diseño Web", "Digitalización"]
-    }
-    </script>
 
     <style>
         /* ─── VARIABLES ─── */
         :root {
-            /* Fondos oscuros con un sutil tono azul noche (Navy) */
+            /* Fondos oscuro azul noche (Navy) */
             --ink: #070914;
             --ink-2: #0e111d;
             --ink-3: #161b2c;
             --paper: #ffffff;
             --paper-2: #f4f4f5;
             
-            /* Colores vibrantes de Startup / IA */
+            /* Colores vibrantes de IA / Tecnología */
             --acid: #6366f1; /* Indigo vibrante */
             --acid-hover: #4f46e5;
             --acid-dim: rgba(99, 102, 241, 0.15);
@@ -68,17 +47,25 @@
             font-family: 'DM Sans', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
         }
 
-        /* ─── GRID TEXTURE ─── */
-        body::before {
-            content: '';
-            position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, black 30%, transparent 100%);
+        /* ─── BACKGROUND CANVAS (Flujos n8n) ─── */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            opacity: 0.25; /* Efecto oscuro al 25-30% de contraste */
+            pointer-events: none;
+        }
+
+        /* Capas superiores para que el canvas quede siempre al fondo */
+        nav, header, section, footer, .metrics-bar, .marquee-wrap {
+            position: relative;
+            z-index: 10;
         }
 
         /* ─── NAV ─── */
@@ -86,8 +73,8 @@
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; align-items: center; justify-content: space-between;
             padding: 22px 60px;
-            background: rgba(7, 9, 20, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(7, 9, 20, 0.7);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--line);
         }
         .nav-logo {
@@ -124,7 +111,6 @@
             display: flex; flex-direction: column;
             justify-content: center; align-items: flex-start;
             padding: 160px 60px 80px;
-            position: relative; overflow: hidden;
         }
 
         .hero-label {
@@ -150,7 +136,7 @@
             max-width: 900px;
         }
         
-        /* Recuperamos el estilo hueco para el "Sin" */
+        /* Efecto de borde hueco recuperado para la palabra 'Sin' */
         h1 em {
             font-style: normal;
             -webkit-text-stroke: 1.5px var(--text-main);
@@ -161,7 +147,6 @@
             background: var(--gradient-accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Reseteamos el text-stroke para que esta palabra sí tenga relleno */
             -webkit-text-stroke: 0;
         }
 
@@ -239,11 +224,9 @@
         @keyframes scrollLine { 0%,100%{transform:scaleX(1);} 50%{transform:scaleX(0.4);} }
 
         /* ─── SECTIONS ─── */
-        section { position: relative; z-index: 1; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
         .section-pad { padding: 120px 0; }
 
-        /* Eyebrow label */
         .eyebrow {
             display: inline-block; font-size: 0.8rem;
             letter-spacing: 1px; text-transform: uppercase;
@@ -271,7 +254,6 @@
         .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
         @keyframes marquee { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
         .marquee-item {
-            font-family: 'DM Sans', sans-serif;
             font-size: 0.9rem; font-weight: 500;
             letter-spacing: 1px; text-transform: uppercase;
             color: var(--text-muted); white-space: nowrap;
@@ -290,7 +272,8 @@
             margin-top: 64px;
         }
         .service-card {
-            background: var(--ink);
+            background: rgba(7, 9, 20, 0.85); /* Semi-transparente para que se vea el canvas */
+            backdrop-filter: blur(10px);
             padding: 52px 40px;
             transition: background 0.3s;
             cursor: default;
@@ -339,7 +322,7 @@
         .service-card:hover .service-tag { color: #38bdf8; border-color: #38bdf8; }
 
         /* ─── PROCESS ─── */
-        .process-section { background: var(--ink-2); }
+        .process-section { background: rgba(14, 17, 29, 0.85); backdrop-filter: blur(10px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
         .process-intro {
             display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
             align-items: end; margin-bottom: 80px;
@@ -380,7 +363,8 @@
         .port-card {
             border-radius: 16px; overflow: hidden;
             border: 1px solid var(--line);
-            background: var(--ink-2);
+            background: rgba(14, 17, 29, 0.85);
+            backdrop-filter: blur(10px);
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             text-decoration: none; color: inherit;
@@ -434,13 +418,6 @@
         }
         .port-card:hover .port-link { border-color: #38bdf8; }
 
-        /* Featured card (full-width) */
-        .port-card.featured { grid-column: 1 / -1; }
-        .port-card.featured .port-img { height: 340px; }
-        .port-card.featured .port-body {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-        }
-
         /* ─── METRICS BAR ─── */
         .metrics-bar {
             background: linear-gradient(135deg, #312e81, #4c1d95, #831843);
@@ -449,7 +426,6 @@
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
             position: relative;
         }
-        /* Textura sutil sobre el fondo degradado */
         .metrics-bar::before {
             content: ''; position: absolute; inset: 0;
             background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
@@ -503,7 +479,8 @@
         .field input,
         .field textarea,
         .field select {
-            background: var(--ink-3); border: 1px solid var(--line);
+            background: rgba(22, 27, 44, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid var(--line);
             color: var(--text-main); font-family: 'DM Sans', sans-serif;
             font-size: 1rem; padding: 14px 18px;
             border-radius: 8px; transition: border-color 0.25s, background 0.25s;
@@ -555,6 +532,7 @@
             padding: 48px 60px;
             display: flex; align-items: center; justify-content: space-between;
             gap: 20px; flex-wrap: wrap;
+            background: var(--ink-2);
         }
         .footer-brand {
             font-family: 'Syne', sans-serif;
@@ -613,6 +591,9 @@
     </style>
 </head>
 <body>
+
+    <!-- CANVAS BACKGROUND (n8n Workflows) -->
+    <canvas id="n8n-canvas" class="bg-canvas"></canvas>
 
     <!-- NAV -->
     <nav>
@@ -684,7 +665,6 @@
             <span class="marquee-item"><span class="marquee-dot"></span>Email Marketing Auto</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Bases de Datos</span>
 
-            <!-- Duplicated for loop -->
             <span class="marquee-item"><span class="marquee-dot"></span>Automatización n8n</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Diseño Web Estratégico</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Agentes IA</span>
@@ -924,13 +904,148 @@
     </footer>
 
     <script>
-        // ─── REVEAL ON SCROLL ───
+        /* ─── MOTOR DE FONDO: FLUJOS N8N ANIMADOS ─── */
+        const canvas = document.getElementById('n8n-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let cw, ch;
+        // Definición de un bloque de nodos repetible para el fondo
+        const blockSize = 800;
+        const blockNodes = [
+            {x: 60, y: 120, color: '#38bdf8'},
+            {x: 60, y: 380, color: '#c084fc'},
+            {x: 60, y: 640, color: '#818cf8'},
+            {x: 360, y: 180, color: '#c084fc'},
+            {x: 360, y: 440, color: '#6366f1'},
+            {x: 660, y: 120, color: '#818cf8'},
+            {x: 660, y: 380, color: '#38bdf8'},
+            {x: 660, y: 640, color: '#c084fc'},
+        ];
+        
+        // Enlaces entre los nodos del bloque
+        const blockLinks = [
+            { s: 0, t: 3 }, { s: 1, t: 3 }, { s: 1, t: 4 }, 
+            { s: 2, t: 4 }, { s: 3, t: 5 }, { s: 3, t: 6 }, 
+            { s: 4, t: 6 }, { s: 4, t: 7 }
+        ].map(l => ({ 
+            source: blockNodes[l.s], 
+            target: blockNodes[l.t], 
+            progress: Math.random() 
+        }));
+
+        function resize() {
+            cw = canvas.width = window.innerWidth;
+            ch = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function drawBackground() {
+            requestAnimationFrame(drawBackground);
+            ctx.clearRect(0, 0, cw, ch);
+            
+            // Efecto Parallax enlazado al scroll
+            const scrollY = window.scrollY * 0.4;
+            const offsetY = -(scrollY % blockSize) - blockSize; 
+            
+            // Actualizar el progreso de los "datos" que fluyen por los cables
+            blockLinks.forEach(link => {
+                link.progress += 0.003;
+                if(link.progress > 1) link.progress -= 1;
+            });
+
+            // Dibujar grid infinito
+            const cols = Math.ceil(cw / blockSize) + 1;
+            const rows = Math.ceil(ch / blockSize) + 2;
+
+            for(let i = -1; i <= cols; i++) {
+                for(let j = -1; j <= rows; j++) {
+                    const bx = i * blockSize;
+                    const by = j * blockSize + offsetY;
+                    
+                    // 1. Dibujar Cables (Paths)
+                    ctx.lineWidth = 2;
+                    blockLinks.forEach(link => {
+                        const sx = bx + link.source.x + 130;
+                        const sy = by + link.source.y + 22;
+                        const tx = bx + link.target.x;
+                        const ty = by + link.target.y + 22;
+                        
+                        ctx.beginPath();
+                        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                        ctx.moveTo(sx, sy);
+                        // Curva Bezier suave tipo n8n
+                        ctx.bezierCurveTo(sx + 80, sy, tx - 80, ty, tx, ty);
+                        ctx.stroke();
+                        
+                        // 2. Dibujar pulso de datos animado (Punto brillante)
+                        const t = link.progress;
+                        // Matemáticas Bezier Cúbica para seguir la curva
+                        const cx_bez = 3 * 80;
+                        const bx_bez = 3 * (-80) - cx_bez;
+                        const ax_bez = (tx - sx) - cx_bez - bx_bez;
+                        const cy_bez = 0;
+                        const by_bez = 0 - cy_bez;
+                        const ay_bez = (ty - sy) - cy_bez - by_bez;
+
+                        const xt = ax_bez*t*t*t + bx_bez*t*t + cx_bez*t + sx;
+                        const yt = ay_bez*t*t*t + by_bez*t*t + cy_bez*t + sy;
+
+                        ctx.beginPath();
+                        ctx.arc(xt, yt, 3.5, 0, Math.PI * 2);
+                        ctx.fillStyle = link.source.color;
+                        ctx.shadowBlur = 12;
+                        ctx.shadowColor = link.source.color;
+                        ctx.fill();
+                        ctx.shadowBlur = 0; // Reset sombra
+                    });
+                    
+                    // 3. Dibujar Nodos estilo n8n
+                    blockNodes.forEach(node => {
+                        const nx = bx + node.x;
+                        const ny = by + node.y;
+                        
+                        // Cuerpo del nodo
+                        ctx.fillStyle = '#161b2c';
+                        ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                        ctx.lineWidth = 1;
+                        
+                        ctx.beginPath();
+                        if(ctx.roundRect) {
+                            ctx.roundRect(nx, ny, 130, 44, 6);
+                        } else {
+                            ctx.rect(nx, ny, 130, 44);
+                        }
+                        ctx.fill();
+                        ctx.stroke();
+                        
+                        // Barra izquierda de color
+                        ctx.fillStyle = node.color;
+                        ctx.beginPath();
+                        if(ctx.roundRect) {
+                            ctx.roundRect(nx, ny, 6, 44, {tl: 6, bl: 6, tr: 0, br: 0});
+                        } else {
+                            ctx.rect(nx, ny, 6, 44);
+                        }
+                        ctx.fill();
+                        
+                        // Líneas simulando texto dentro del nodo
+                        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+                        ctx.fillRect(nx + 18, ny + 12, 60, 4);
+                        ctx.fillRect(nx + 18, ny + 26, 35, 4);
+                    });
+                }
+            }
+        }
+        drawBackground(); // Iniciar animación
+
+        /* ─── REVEAL ON SCROLL ─── */
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        // ─── FORM SUBMIT ───
+        /* ─── FORM SUBMIT ─── */
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -955,7 +1070,7 @@
                 });
                 if (res.ok) {
                     btn.innerText = '¡Solicitud recibida! ✓';
-                    btn.style.background = '#10b981'; // Verde esmeralda para el éxito
+                    btn.style.background = '#10b981'; // Verde para éxito
                     btn.style.color = '#ffffff';
                     this.reset();
                     setTimeout(() => {
@@ -967,7 +1082,7 @@
                 } else { throw new Error(); }
             } catch {
                 btn.innerText = 'Error de conexión. Inténtalo de nuevo.';
-                btn.style.background = '#ef4444'; 
+                btn.style.background = '#ef4444'; // Rojo para error
                 btn.style.color = '#ffffff';
                 setTimeout(() => {
                     btn.innerText = orig;
