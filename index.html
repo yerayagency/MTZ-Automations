@@ -209,9 +209,9 @@ nav{
 }
 
 h1{
-    font-size:clamp(4rem,8vw,7.5rem);
-    line-height:.94;
-    letter-spacing:-.06em;
+    font-size:clamp(2.8rem,8vw,7.5rem);
+    line-height:1.05;
+    letter-spacing:-.04em;
     font-weight:800;
     margin-bottom:28px;
 }
@@ -220,6 +220,9 @@ h1{
     background:var(--gradient);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    /* FIX: Previene el corte de la letra "s" o letras con serifas en webkit */
+    display:inline-block;
+    padding-right:0.1em;
 }
 
 .hero p{
@@ -455,9 +458,9 @@ section{
 }
 
 .section-title{
-    font-size:clamp(2.8rem,5vw,5rem);
-    line-height:1;
-    letter-spacing:-.06em;
+    font-size:clamp(2.5rem,5vw,5rem);
+    line-height:1.1;
+    letter-spacing:-.04em;
 
     margin-bottom:22px;
 }
@@ -630,9 +633,9 @@ section{
 }
 
 .case-left h3{
-    font-size:3rem;
-    line-height:1;
-    letter-spacing:-.05em;
+    font-size:clamp(2rem,4vw,3rem);
+    line-height:1.1;
+    letter-spacing:-.04em;
 
     margin-bottom:24px;
 }
@@ -899,68 +902,159 @@ footer{
     transform:none;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE CORREGIDO PARA MÓVILES */
 
 @media(max-width:1100px){
-
     .hero-grid,
     .case-study,
     .contact-wrap{
         grid-template-columns:1fr;
     }
-
     .services{
         grid-template-columns:1fr;
     }
-
     .process-grid{
         grid-template-columns:1fr 1fr;
     }
-
     .stats{
         grid-template-columns:1fr 1fr;
     }
-
 }
 
 @media(max-width:760px){
-
     nav{
         top:12px;
         padding:12px 14px;
     }
-
     .nav-links{
         display:none;
     }
-
+    
+    /* Hero Section Centering */
     .hero{
-        padding-top:150px;
+        padding-top:130px;
+        padding-bottom:80px;
     }
-
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
     h1{
-        font-size:4rem;
+        font-size:clamp(2.5rem, 10vw, 4rem);
+        line-height:1.1;
+    }
+    .hero p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-actions{
+        justify-content: center;
+        width: 100%;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
     }
 
+    /* Grids to Single Column */
     .stats,
     .process-grid,
     .row{
         grid-template-columns:1fr;
     }
 
-    .case-left,
-    .contact-card{
-        padding:32px;
-    }
-
+    /* Sections Centering */
     section{
-        padding:100px 0;
+        padding:90px 0;
     }
-
+    .reveal > .section-label,
+    .reveal > .section-title,
+    .reveal > .section-text {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
     .section-title{
-        font-size:3rem;
+        font-size:2.5rem;
+    }
+    
+    /* Services & Process Centering */
+    .service, .process-card {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
+    /* Case Study Centering */
+    .case-study {
+        display: flex;
+        flex-direction: column;
+    }
+    .case-left{
+        padding:40px 24px;
+        text-align: center;
+        align-items: center;
+    }
+    .case-meta {
+        justify-content: center;
+    }
+    .case-link {
+        margin: 0 auto;
+        width: 100%;
+        justify-content: center;
+    }
+    .case-right {
+        min-height: 250px;
+    }
+
+    /* Contact Section */
+    .contact-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .contact-card{
+        padding:32px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-list {
+        width: 100%;
+        text-align: left;
+    }
+    
+    /* Footer */
+    footer .footer {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media(max-width:480px) {
+    /* Ajustes extra para móviles pequeños */
+    .panel {
+        padding: 20px 16px;
+    }
+    .flow-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    .flow-left {
+        flex-direction: column;
+    }
+    .dash-top {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
 }
 
 </style>
@@ -968,8 +1062,6 @@ footer{
 <body>
 
 <div class="noise"></div>
-
-<!-- NAV -->
 
 <nav>
     <div class="logo">MTZ Automations</div>
@@ -985,8 +1077,6 @@ footer{
         Auditoría gratuita
     </a>
 </nav>
-
-<!-- HERO -->
 
 <header class="hero">
 <div class="container">
@@ -1119,8 +1209,6 @@ Activo 24/7
 </div>
 </header>
 
-<!-- SERVICES -->
-
 <section id="servicios">
 <div class="container">
 
@@ -1168,8 +1256,6 @@ Implementamos sistemas inteligentes capaces de responder leads, analizar datos, 
 </div>
 </section>
 
-<!-- PROCESS -->
-
 <section id="proceso">
 <div class="container">
 
@@ -1216,8 +1302,6 @@ Cada implementación se diseña para integrarse perfectamente con tu negocio. To
 
 </div>
 </section>
-
-<!-- CASE STUDY -->
 
 <section id="proyectos">
 <div class="container">
@@ -1283,8 +1367,6 @@ alt="Proyecto real MTZ"
 
 </div>
 </section>
-
-<!-- CONTACT -->
 
 <section id="contacto">
 <div class="container">
@@ -1415,8 +1497,6 @@ Enviar solicitud
 
 </div>
 </section>
-
-<!-- FOOTER -->
 
 <footer>
 
