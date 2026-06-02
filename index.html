@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTZ Automations | Ecosistemas Digitales e Inteligencia Artificial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
     /* VARIABLES */
     :root {
@@ -23,7 +23,7 @@
         --glow-purple: rgba(99, 102, 241, 0.4);
         --font-main: 'Inter', sans-serif;
         --nav-height: 80px;
-        --radius: 28px; /* Curvas más pronunciadas */
+        --radius: 28px;
     }
 
     /* RESET & BASE */
@@ -52,8 +52,6 @@
 
     /* UTILITIES */
     .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-    
-    /* FIX: Añadido padding-bottom para que letras como la 'g', 'p', 'y' no se corten */
     .text-gradient { 
         background: var(--gradient-primary); 
         -webkit-background-clip: text; 
@@ -63,7 +61,6 @@
         padding-bottom: 0.15em; 
         line-height: 1.1; 
     }
-    
     .section-padding { padding: 140px 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
     
     /* REVEAL ANIMATIONS */
@@ -177,13 +174,13 @@
     
     .process-cta { margin-top: 60px; }
 
-    /* PROJECTS SECTION (Limpiado y adaptado) */
+    /* PROJECTS SECTION */
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .project-metric { font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; letter-spacing: -1px; }
     .project-metric span { font-size: 0.8rem; color: var(--accent-blue); font-weight: 700; vertical-align: middle; margin-left: 8px; text-transform: uppercase; letter-spacing: 1px;}
 
     /* CTA SECTION */
-    #cta { text-align: center; position: relative; overflow: hidden; }
+    #cta { text-align: center; position: relative; overflow: hidden; padding-bottom: 60px; }
     .cta-container { max-width: 800px; margin: 0 auto; background: var(--surface-color); padding: 80px 40px; border-radius: var(--radius); border: 1px solid var(--border-color); position: relative; z-index: 2; box-shadow: 0 20px 80px rgba(0,0,0,0.5); }
     .cta-container::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-blue), transparent); }
     .cta-tag { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-purple); margin-bottom: 24px; display: block; }
@@ -197,8 +194,12 @@
     }
     .btn-massive:hover { transform: scale(1.02); box-shadow: 0 15px 40px rgba(255,255,255,0.2); }
 
+    /* PARTICLE CANVAS SECTION (Añadido aquí debajo del CTA) */
+    .particle-section { position: relative; width: 100%; height: 50vh; min-height: 350px; display: flex; justify-content: center; align-items: center; overflow: hidden; border-top: 1px solid var(--border-color); background: linear-gradient(to bottom, transparent, rgba(14, 165, 233, 0.03));}
+    #particleCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: default; }
+
     /* FOOTER */
-    footer { padding: 40px 0; border-top: 1px solid var(--border-color); }
+    footer { padding: 40px 0; border-top: 1px solid var(--border-color); position: relative; z-index: 10; background: var(--bg-color);}
     .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
     .footer-brand { font-weight: 700; font-size: 1.2rem; }
     .footer-links { display: flex; gap: 24px; }
@@ -206,10 +207,7 @@
     .footer-links a:hover { color: var(--text-main); }
     .footer-copy { color: var(--text-muted); font-size: 0.85rem; width: 100%; text-align: center; margin-top: 40px; }
 
-    /* =========================================
-       RESPONSIVE MEJORADO Y ESPACIADOS (MÓVIL)
-       ========================================= */
-       
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
         .hero-grid, .process-container { grid-template-columns: 1fr; gap: 40px; }
         .hero-visual { height: 400px; }
@@ -219,20 +217,17 @@
     }
     
     @media (max-width: 768px) {
-        /* General y Separaciones más holgadas para que no toque los bordes */
         .container { padding: 0 32px; }
         .section-padding { padding: 80px 0; min-height: auto; }
         .section-header { margin-bottom: 40px; text-align: center; }
         .section-title { font-size: 2rem; }
         .section-subtitle { font-size: 1rem; }
         
-        /* Navegación */
         nav { padding: 20px 24px; }
         .nav-links { display: none; }
         .nav-logo { font-size: 1.1rem; }
         .nav-btn { padding: 8px 16px; font-size: 0.85rem; }
         
-        /* Hero Section */
         #hero { padding-top: 100px; }
         .hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .hero-title { font-size: 2.2rem; letter-spacing: -1px; margin-bottom: 16px; }
@@ -241,21 +236,17 @@
         .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
         .hero-metrics { flex-direction: column; gap: 12px; align-items: center; width: 100%; }
         
-        /* Efecto Visual IA Responsivo */
         .hero-visual { height: 280px; margin-top: -20px; }
         .ai-core-container { width: 220px; height: 220px; transform: scale(0.9); }
         .ai-orb { width: 80px; height: 80px; }
         
-        /* Grids a 1 columna y reducción de paddings internos en tarjetas */
         .services-grid, .projects-grid { grid-template-columns: 1fr; gap: 24px; }
         .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1; }
-        .glow-content { padding: 28px; } /* Más aire por dentro */
+        .glow-content { padding: 28px; } 
         
-        /* Marquee Separador */
         .marquee-wrapper { padding: 30px 0; }
         .marquee-item { font-size: 1.2rem; gap: 16px; margin-right: 16px; }
         
-        /* Proceso */
         .process-container { gap: 40px; }
         .process-steps { gap: 32px; }
         .step { padding-left: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -263,23 +254,23 @@
         .step-tags { justify-content: center; }
         .process-cta { text-align: center; margin-top: 30px;}
         
-        /* Proyectos (Ajuste fuentes) */
         .project-metric { font-size: 1.8rem; }
         
-        /* CTA Final */
         .cta-container { padding: 40px 24px; }
         .cta-title { font-size: 2rem; margin-bottom: 24px; }
         .cta-list { flex-direction: column; align-items: center; gap: 16px; margin-bottom: 32px; }
         .cta-list-item { text-align: center; }
         .btn-massive { width: 100%; padding: 16px 20px; font-size: 1.05rem; text-align: center; }
         
-        /* Footer arreglado para estar en línea */
+        /* Particle canvas size para móvil */
+        .particle-section { height: 40vh; min-height: 250px;}
+
         .footer-content { flex-direction: column; justify-content: center; text-align: center; gap: 16px; }
         .footer-links { flex-direction: row; justify-content: center; gap: 24px; width: 100%; }
     }
     
     @media (max-width: 480px) {
-        .container { padding: 0 20px; } /* Mantiene un margen mínimo en móviles muy pequeños */
+        .container { padding: 0 20px; } 
         .nav-content { padding: 0; }
         .nav-logo { font-size: 1rem; }
         .nav-btn { padding: 8px 14px; font-size: 0.8rem; }
@@ -297,7 +288,6 @@
     <div class="bg-noise"></div>
     <div class="bg-glow"></div>
 
-    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="container nav-content">
             <a href="#" class="nav-logo">MTZ Automations</a>
@@ -310,7 +300,6 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <header id="hero" class="container">
         <div class="hero-grid">
             <div class="hero-text reveal">
@@ -350,7 +339,6 @@
         </div>
     </header>
 
-    <!-- SERVICIOS SECTION -->
     <section id="servicios" class="section-padding container">
         <div class="section-header reveal">
             <h2 class="section-title">Infraestructura tecnológica para <span class="text-gradient">dominar tu sector.</span></h2>
@@ -358,7 +346,6 @@
         </div>
 
         <div class="services-grid">
-            <!-- Servicio 1 -->
             <div class="glow-card interactive-card reveal">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -368,7 +355,6 @@
                     <p class="card-desc">Sitios ultrarrápidos, optimizados para SEO y estructurados milimétricamente con un único objetivo: convertir visitantes en clientes.</p>
                 </div>
             </div>
-            <!-- Servicio 2 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.1s;">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -378,7 +364,6 @@
                     <p class="card-desc">Interfaces premium, intuitivas y estéticas que guían al usuario sin esfuerzo, elevando la percepción de valor de tu marca.</p>
                 </div>
             </div>
-            <!-- Servicio 3 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.2s;">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -388,17 +373,15 @@
                     <p class="card-desc">Conexión de herramientas, flujos automáticos y sistemas CRM para eliminar horas de trabajo manual y evitar errores humanos.</p>
                 </div>
             </div>
-            <!-- Servicio 4 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.3s;">
                 <div class="glow-content">
                     <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2-2z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </div>
                     <h3 class="card-title">Chatbots e IA</h3>
                     <p class="card-desc">Asistentes conversacionales avanzados capaces de atender dudas, cualificar leads y agendar reuniones 24/7 sin intervención humana.</p>
                 </div>
             </div>
-            <!-- Servicio 5 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.4s;">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -411,18 +394,15 @@
         </div>
     </section>
 
-    <!-- MARQUEE SEPARATOR -->
     <div class="marquee-wrapper">
         <div class="marquee-content">
-            <!-- Bloque 1 -->
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Productividad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Ventas</div>
-            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 13 9 20 9"/><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg> Escalabilidad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Menos trabajo manual</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Más crecimiento</div>
             
-            <!-- Duplicado para efecto infinito -->
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Productividad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Ventas</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
@@ -432,7 +412,6 @@
         </div>
     </div>
 
-    <!-- PROCESS SECTION -->
     <section id="proceso" class="section-padding container">
         <div class="section-header reveal">
             <h2 class="section-title">Ingeniería de precisión en <span class="text-gradient">4 fases.</span></h2>
@@ -489,7 +468,6 @@
                 </div>
             </div>
 
-            <!-- Visual process timeline for desktop -->
             <div class="process-visual">
                 <div class="timeline-container">
                     <div class="timeline-line"></div>
@@ -512,7 +490,6 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION (Limpio y coherente) -->
     <section id="proyectos" class="section-padding container">
         <div class="section-header reveal">
             <h2 class="section-title">Resultados impulsados por <span class="text-gradient">datos y código.</span></h2>
@@ -545,7 +522,7 @@
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.2s;">
                 <div class="glow-content">
                     <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2-2z"></path></svg>
                     </div>
                     <div class="project-metric">-60%<span>consultas repetitivas</span></div>
                     <h3 class="project-title">Portal con Chatbot IA</h3>
@@ -555,7 +532,6 @@
         </div>
     </section>
 
-    <!-- CTA FINAL SECTION -->
     <section id="cta" class="section-padding container">
         <div class="cta-container reveal">
             <span class="cta-tag">Último paso</span>
@@ -580,7 +556,10 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <section class="particle-section">
+        <canvas id="particleCanvas"></canvas>
+    </section>
+
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">MTZ Automations</div>
@@ -665,6 +644,114 @@
                     });
                 }
             }
+        });
+
+        // CANVAS DE PARTÍCULAS INTERACTIVAS ("MTZ")
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        
+        let particleArray = [];
+        let mouse = { x: null, y: null, radius: 100 };
+
+        canvas.addEventListener('mousemove', function(event) {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mouseleave', function() {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        function initCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            particleArray = [];
+            
+            let fontSize = Math.min(canvas.width / 3, 250); 
+            ctx.fillStyle = 'white';
+            ctx.font = `900 ${fontSize}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('MTZ', canvas.width/2, canvas.height/2);
+            
+            const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let y = 0, y2 = textCoordinates.height; y < y2; y += 4) {
+                for (let x = 0, x2 = textCoordinates.width; x < x2; x += 4) {
+                    if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
+                        let positionX = x;
+                        let positionY = y;
+                        particleArray.push(new Particle(positionX, positionY));
+                    }
+                }
+            }
+        }
+
+        class Particle {
+            constructor(x, y) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.baseX = x;
+                this.baseY = y;
+                this.size = 2;
+                this.density = (Math.random() * 30) + 5;
+                this.color = '#0ea5e9';
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+            
+            update() {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = mouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
+                if (distance < mouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx / 15;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy / 15;
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particleArray.length; i++) {
+                particleArray[i].draw();
+                particleArray[i].update();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        setTimeout(() => {
+            initCanvas();
+            animate();
+        }, 100);
+
+        window.addEventListener('resize', function() {
+            initCanvas();
         });
     </script>
 </body>
