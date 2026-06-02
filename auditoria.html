@@ -57,8 +57,6 @@
     /* HERO & TYPING */
     .hero-form { padding: 60px 0 100px; text-align: center; }
     .typing-container { min-height: 80px; margin-bottom: 20px; display: flex; justify-content: center; align-items: center;}
-    
-    /* Tamaño dinámico que asegura que no se rompa en móvil */
     .typing-text { font-size: clamp(1.2rem, 5vw, 4rem); font-weight: 800; letter-spacing: -1px; margin: 0; border-right: 3px solid var(--accent-blue); white-space: nowrap; overflow: hidden; }
     @keyframes blink { 50% { border-color: transparent; } }
     .blinking-cursor { animation: blink 1s step-end infinite; }
@@ -76,18 +74,21 @@
     input, select, textarea { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; color: var(--text-main); font-family: var(--font-main); font-size: 1rem; outline: none; transition: all 0.3s ease; }
     textarea { min-height: 120px; resize: vertical; }
     input:focus, select:focus, textarea:focus { border-color: var(--accent-blue); background: rgba(14, 165, 233, 0.05); box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); }
-    
     select option { background-color: #12121a; color: #ffffff; }
     
     .submit-btn { margin-top: 16px; width: 100%; background: var(--text-main); color: var(--bg-color); border: none; border-radius: 12px; padding: 18px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
     .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,255,255,0.15); }
+
+    /* TEXTO LEGAL DEBAJO DEL BOTÓN */
+    .legal-disclaimer { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 16px; }
+    .legal-disclaimer a { color: var(--text-muted); text-decoration: underline; transition: color 0.3s; }
+    .legal-disclaimer a:hover { color: var(--text-main); }
 
     /* SECCIONES DE VALOR */
     .value-section { padding: 100px 0; text-align: center; }
     .section-tag { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-purple); margin-bottom: 16px; display: block; }
     .section-title { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; }
     .section-desc { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 60px; }
-
     .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: left; }
 
     /* GLOW CARDS */
@@ -105,39 +106,26 @@
     .particle-section { position: relative; width: 100%; height: 60vh; min-height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden; border-top: 1px solid var(--border-color); background: linear-gradient(to bottom, transparent, rgba(14, 165, 233, 0.03));}
     #particleCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: default; }
 
-    /* =========================================
-       RESPONSIVE REGLAS MEJORADAS (MÓVIL / TABLET)
-       ========================================= */
-    @media (max-width: 768px) {
-        /* Navegación */
-        nav { padding: 20px 16px; }
-        
-        /* Layout de secciones más compacto */
-        .hero-form { padding: 40px 0 60px; }
-        .value-section { padding: 60px 0; }
-        .section-desc { font-size: 1rem; margin-bottom: 40px; padding: 0 10px; }
-        
-        /* Ajuste fino del texto para evitar que se desborde */
-        .typing-text { font-size: clamp(1.2rem, 6.5vw, 2.5rem); }
-        .hero-subtitle { font-size: 1rem; padding: 0 15px; margin-bottom: 40px; }
-        
-        /* Formulario */
-        .form-grid { grid-template-columns: 1fr; gap: 16px; }
-        .form-card { padding: 32px 20px; border-radius: 20px; }
-        
-        /* Tarjetas */
-        .cards-grid { grid-template-columns: 1fr; gap: 16px; }
-        .glow-content { padding: 24px; }
-        
-        /* Canvas IA */
-        .particle-section { height: 50vh; min-height: 300px; }
-    }
+    /* FOOTER */
+    footer { padding: 40px 0; border-top: 1px solid var(--border-color); position: relative; z-index: 10; background: var(--bg-color); }
+    .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-weight: 700; font-size: 1.2rem; color: var(--text-main); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: color 0.2s ease; }
+    .footer-links a:hover { color: var(--text-main); }
+    .footer-copy { color: var(--text-muted); font-size: 0.85rem; width: 100%; text-align: center; margin-top: 40px; }
 
-    @media (max-width: 480px) {
-        .typing-text { font-size: clamp(1.1rem, 5.5vw, 1.8rem); } /* Para móviles muy estrechos */
-        .nav-logo { font-size: 1.1rem; }
-        .nav-back { font-size: 0.85rem; }
-        .section-title { font-size: 1.8rem; }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .form-grid { grid-template-columns: 1fr; }
+        .form-card { padding: 32px 20px; border-radius: 20px; }
+        .cards-grid { grid-template-columns: 1fr; }
+        .typing-text { font-size: clamp(1.2rem, 6.5vw, 2.5rem); }
+        .hero-subtitle { font-size: 1rem; padding: 0 10px; margin-bottom: 40px; }
+        .particle-section { height: 40vh; }
+        .typing-container { min-height: 50px; }
+        .footer-content { flex-direction: column; justify-content: center; text-align: center; gap: 16px; }
+        .footer-links { flex-direction: column; gap: 12px; }
     }
 </style>
 </head>
@@ -191,6 +179,7 @@
                     </div>
                 </div>
                 <button type="submit" class="submit-btn">Solicitar Auditoría</button>
+                <p class="legal-disclaimer">Al solicitar la auditoría, aceptas nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
             </form>
         </section>
 
@@ -253,6 +242,17 @@
         <canvas id="particleCanvas"></canvas>
     </section>
 
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">MTZ Automations</div>
+            <div class="footer-links">
+                <a href="terminos.html">Términos</a>
+                <a href="privacidad.html">Privacidad</a>
+            </div>
+            <div class="footer-copy">© 2026 MTZ Automations. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+
     <script>
         // EFECTO DE ESCRITURA (Typing Effect)
         const text = "Consultoría personalizada";
@@ -263,7 +263,7 @@
             if (i < text.length) {
                 typewriterElement.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 80); // Velocidad de escritura
+                setTimeout(typeWriter, 80);
             } else {
                 setTimeout(() => {
                     typewriterElement.classList.remove('blinking-cursor');
@@ -272,7 +272,6 @@
             }
         }
         
-        // Iniciar escritura al cargar
         window.onload = typeWriter;
 
         // EFECTO GLOW CARDS
@@ -309,19 +308,16 @@
             canvas.height = canvas.parentElement.offsetHeight;
             particleArray = [];
             
-            // Dibujar el texto temporalmente para leer sus píxeles
-            let fontSize = Math.min(canvas.width / 3, 250); // Tamaño dinámico
+            let fontSize = Math.min(canvas.width / 3, 250); 
             ctx.fillStyle = 'white';
             ctx.font = `900 ${fontSize}px sans-serif`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText('MTZ', canvas.width/2, canvas.height/2);
             
-            // Extraer datos de los píxeles
             const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar lienzo
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Crear partículas basadas en los píxeles (escaneando cada 4 píxeles por rendimiento)
             for (let y = 0, y2 = textCoordinates.height; y < y2; y += 4) {
                 for (let x = 0, x2 = textCoordinates.width; x < x2; x += 4) {
                     if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
@@ -388,7 +384,6 @@
             requestAnimationFrame(animate);
         }
 
-        // Inicializar
         setTimeout(() => {
             initCanvas();
             animate();
