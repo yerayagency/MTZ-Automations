@@ -3,702 +3,273 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>Política de Privacidad | MTZ Automations</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-
-    --bg:#050816;
-    --bg-2:#0b1020;
-
-    --white:#ffffff;
-    --text:#d5daea;
-    --muted:#8f98b3;
-
-    --line:rgba(255,255,255,.08);
-
-    --accent:#7c8cff;
-    --accent-2:#55d6ff;
-
-    --gradient:
-    linear-gradient(
-        135deg,
-        #55d6ff 0%,
-        #7c8cff 45%,
-        #b56dff 100%
-    );
-
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-
-    font-family:'Inter',sans-serif;
-
-    background:
-    radial-gradient(circle at top left, rgba(124,140,255,.16), transparent 35%),
-    radial-gradient(circle at top right, rgba(85,214,255,.12), transparent 30%),
-    radial-gradient(circle at bottom, rgba(181,109,255,.08), transparent 40%),
-    var(--bg);
-
-    color:var(--white);
-
-    min-height:100vh;
-    overflow-x:hidden;
-}
-
-/* NOISE */
-
-.noise{
-    position:fixed;
-    inset:0;
-    opacity:.05;
-    pointer-events:none;
-    background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-}
-
-/* NAV */
-
-nav{
-
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:min(1180px, calc(100% - 32px));
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:14px 18px;
-
-    border-radius:20px;
-
-    background:rgba(10,15,31,.58);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    z-index:1000;
-}
-
-.logo{
-
-    font-size:.92rem;
-    font-weight:700;
-
-    letter-spacing:.18em;
-    text-transform:uppercase;
-
-    background:var(--gradient);
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.nav-btn{
-
-    padding:13px 18px;
-
-    border-radius:14px;
-
-    text-decoration:none;
-
-    color:var(--white);
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    font-size:.9rem;
-    font-weight:600;
-
-    transition:.35s;
-}
-
-.nav-btn:hover{
-
-    background:var(--white);
-    color:#000;
-}
-
-/* CONTAINER */
-
-.container{
-
-    width:min(920px, calc(100% - 40px));
-
-    margin:auto;
-
-    padding-top:180px;
-    padding-bottom:100px;
-
-    position:relative;
-    z-index:2;
-}
-
-/* HERO */
-
-.hero-badge{
-
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:rgba(255,255,255,.04);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    margin-bottom:28px;
-
-    color:#dce4ff;
-
-    font-size:.8rem;
-
-    letter-spacing:.12em;
-    text-transform:uppercase;
-}
-
-.hero-badge span{
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:#69f0ff;
-
-    box-shadow:0 0 18px #69f0ff;
-}
-
-h1{
-
-    font-size:clamp(3.5rem,7vw,6rem);
-
-    line-height:.94;
-
-    letter-spacing:-.06em;
-
-    margin-bottom:22px;
-}
-
-.gradient{
-
-    background:var(--gradient);
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.hero-text{
-
-    color:var(--muted);
-
-    font-size:1.08rem;
-
-    line-height:1.9;
-
-    max-width:720px;
-
-    margin-bottom:60px;
-}
-
-/* CARD */
-
-.legal-card{
-
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,.05),
-        rgba(255,255,255,.025)
-    );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:34px;
-
-    padding:50px;
-
-    backdrop-filter:blur(24px);
-
-    box-shadow:
-    0 30px 80px rgba(0,0,0,.4);
-}
-
-/* SECTION */
-
-.section{
-
-    padding-bottom:42px;
-
-    margin-bottom:42px;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.section:last-child{
-
-    border-bottom:none;
-    margin-bottom:0;
-    padding-bottom:0;
-}
-
-.section h2{
-
-    font-size:1.5rem;
-
-    letter-spacing:-.03em;
-
-    margin-bottom:18px;
-}
-
-.section p{
-
-    color:var(--muted);
-
-    line-height:1.95;
-
-    margin-bottom:18px;
-}
-
-.section ul{
-
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-
-    margin-top:24px;
-}
-
-.section li{
-
-    list-style:none;
-
-    padding:18px;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.03);
-
-    border:1px solid rgba(255,255,255,.06);
-
-    color:var(--text);
-
-    line-height:1.7;
-}
-
-.section strong{
-    color:var(--white);
-}
-
-/* INFO GRID */
-
-.info-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,minmax(0,1fr));
-
-    gap:18px;
-
-    margin-top:24px;
-}
-
-.info-card{
-
-    padding:22px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.03);
-
-    border:1px solid rgba(255,255,255,.06);
-}
-
-.info-label{
-
-    display:block;
-
-    margin-bottom:10px;
-
-    color:#9fb0d3;
-
-    font-size:.76rem;
-
-    letter-spacing:.14em;
-    text-transform:uppercase;
-}
-
-.info-value{
-
-    color:var(--white);
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    line-height:1.6;
-}
-
-/* FOOT */
-
-.bottom{
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:20px;
-
-    margin-top:60px;
-
-    flex-wrap:wrap;
-}
-
-.updated{
-
-    color:var(--muted);
-
-    font-size:.92rem;
-}
-
-.back{
-
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-
-    padding:16px 22px;
-
-    border-radius:18px;
-
-    text-decoration:none;
-
-    background:var(--white);
-
-    color:#000;
-
-    font-weight:700;
-
-    transition:.4s;
-}
-
-.back:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:
-    0 20px 50px rgba(255,255,255,.12);
-}
-
-/* REVEAL */
-
-.reveal{
-
-    opacity:0;
-    transform:translateY(40px);
-
-    transition:1s cubic-bezier(.16,1,.3,1);
-}
-
-.reveal.active{
-
-    opacity:1;
-    transform:none;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:760px){
-
-    nav{
-
-        top:12px;
-        padding:12px 14px;
+    /* VARIABLES (Misma línea estética) */
+    :root {
+        --bg-color: #030305;
+        --surface-color: #0a0a0e;
+        --border-color: rgba(255, 255, 255, 0.06);
+        --border-highlight: rgba(255, 255, 255, 0.15);
+        --text-main: #ffffff;
+        --text-muted: #8a8f98;
+        --accent-blue: #0ea5e9;
+        --accent-purple: #6366f1;
+        --gradient-primary: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+        --font-main: 'Inter', sans-serif;
+        --nav-height: 80px;
+        --radius: 28px;
     }
 
-    .container{
-
-        padding-top:150px;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        font-family: var(--font-main);
+        overflow-x: hidden;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
     }
 
-    h1{
-
-        font-size:3.4rem;
+    /* FONDOS */
+    .bg-noise {
+        position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    .bg-glow {
+        position: fixed; inset: 0; pointer-events: none; z-index: 0;
+        background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.05), transparent 40%),
+                    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.04), transparent 40%);
     }
 
-    .legal-card{
-
-        padding:30px;
+    /* UTILS */
+    .container { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .text-gradient { 
+        background: var(--gradient-primary); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        display: inline-block; 
+        padding-right: 0.1em; 
+        padding-bottom: 0.15em; 
+        line-height: 1.1; 
     }
 
-    .info-grid{
+    /* NAVBAR MINIMALISTA */
+    nav {
+        position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height); z-index: 100;
+        display: flex; align-items: center; transition: background 0.3s ease; border-bottom: 1px solid transparent;
+    }
+    nav.scrolled { background: rgba(3, 3, 5, 0.7); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-color); }
+    .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { font-size: 1.25rem; font-weight: 800; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--text-main); }
 
-        grid-template-columns:1fr;
+    /* HEADER TEXT */
+    .header-section { padding-top: 180px; padding-bottom: 60px; text-align: center; }
+    .hero-badge {
+        display: inline-flex; align-items: center; gap: 8px; 
+        background: var(--surface-color); border: 1px solid var(--border-color); 
+        padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; 
+        color: var(--accent-blue); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 10px var(--accent-blue); }
+    .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 20px; }
+    .hero-desc { font-size: 1.15rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; line-height: 1.8; }
+
+    /* LEGAL CARD */
+    .legal-card {
+        background: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: 60px;
+        margin-bottom: 100px;
+        position: relative;
+        box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+    }
+    .legal-card::before {
+        content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 40%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
     }
 
-    .bottom{
-
-        flex-direction:column;
-        align-items:flex-start;
+    /* SECTIONS INSIDE CARD */
+    .legal-section { margin-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 40px; }
+    .legal-section:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+    .legal-section h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; color: var(--text-main); }
+    .legal-section p { color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+    
+    .legal-section ul { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .legal-section li {
+        list-style: none; padding: 20px; border-radius: 16px;
+        background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+        color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;
     }
+    .legal-section strong { color: var(--text-main); font-weight: 600; }
 
-}
+    /* INFO GRID */
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+    .info-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 16px; padding: 20px; }
+    .info-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-purple); margin-bottom: 8px; }
+    .info-value { color: var(--text-main); font-weight: 600; font-size: 1rem; line-height: 1.5; }
 
+    /* FOOTER OF LEGAL CARD */
+    .card-footer {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);
+        flex-wrap: wrap; gap: 20px;
+    }
+    .updated-date { color: var(--text-muted); font-size: 0.9rem; }
+    
+    .btn-primary {
+        position: relative; background: transparent; color: var(--text-main); padding: 14px 28px; border-radius: 12px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; z-index: 1; transition: transform 0.2s ease; font-size: 0.95rem;
+    }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--gradient-primary); z-index: -2; }
+    .btn-primary::after { content: ''; position: absolute; inset: 1px; background: var(--bg-color); border-radius: 11px; z-index: -1; transition: opacity 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary:hover::after { opacity: 0.8; }
+
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+        .container { padding: 0 20px; }
+        nav { padding: 0; }
+        .nav-content { padding: 0 20px; height: 100%; }
+        .nav-logo { font-size: 1.1rem; }
+        .nav-back { font-size: 0.85rem; }
+        
+        .header-section { padding-top: 130px; padding-bottom: 40px; }
+        .hero-title { font-size: 2.2rem; }
+        .hero-desc { font-size: 1rem; padding: 0 10px; }
+        
+        .legal-card { padding: 32px 24px; border-radius: 24px; margin-bottom: 60px;}
+        .legal-section h2 { font-size: 1.3rem; }
+        .legal-section li { padding: 16px; font-size: 0.9rem; }
+        
+        .info-grid { grid-template-columns: 1fr; }
+        
+        .card-footer { flex-direction: column; align-items: center; text-align: center; gap: 24px; padding-top: 30px; margin-top: 40px;}
+        .btn-primary { width: 100%; }
+    }
+    
+    @media(max-width: 480px) {
+        .hero-badge { font-size: 0.7rem; padding: 6px 12px; }
+        .legal-card { padding: 24px 16px; }
+    }
 </style>
 </head>
 <body>
 
-<div class="noise"></div>
-
-<!-- NAV -->
-
-<nav>
-
-<div class="logo">
-MTZ Automations
-</div>
-
-<a href="index.html" class="nav-btn">
-Volver a la web
-</a>
-
-</nav>
-
-<!-- CONTENT -->
-
-<div class="container">
-
-<div class="hero-badge reveal">
-<span></span>
-Protección de datos
-</div>
-
-<h1 class="reveal">
-Política de<br>
-<span class="gradient">Privacidad</span>
-</h1>
-
-<p class="hero-text reveal">
-Tu privacidad es importante para nosotros. En esta política explicamos qué datos recopilamos, cómo los utilizamos y cómo protegemos la información enviada a través de MTZ Automations.
-</p>
-
-<div class="legal-card reveal">
-
-<div class="section">
-
-<h2>1. Responsable del tratamiento</h2>
-
-<p>
-El responsable del tratamiento de los datos personales recopilados a través de este sitio web es:
-</p>
-
-<div class="info-grid">
-
-<div class="info-card">
-
-<span class="info-label">
-Titular
-</span>
-
-<div class="info-value">
-Yeray Campaña
-</div>
-
-</div>
-
-<div class="info-card">
-
-<span class="info-label">
-DNI
-</span>
-
-<div class="info-value">
-41688683X
-</div>
-
-</div>
-
-<div class="info-card">
-
-<span class="info-label">
-Email
-</span>
-
-<div class="info-value">
-mtz.automations@gmail.com
-</div>
-
-</div>
-
-<div class="info-card">
-
-<span class="info-label">
-Actividad
-</span>
-
-<div class="info-value">
-Automatización de procesos y desarrollo web
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>2. Finalidad del tratamiento</h2>
-
-<p>
-Recopilamos tu nombre, correo electrónico y detalles del proyecto a través del formulario de contacto con la única finalidad de:
-</p>
-
-<ul>
-
-<li>
-Responder solicitudes de auditoría o presupuesto.
-</li>
-
-<li>
-Analizar la viabilidad técnica de cada proyecto.
-</li>
-
-<li>
-Gestionar futuras comunicaciones relacionadas con el servicio solicitado.
-</li>
-
-</ul>
-
-<p>
-No utilizaremos tus datos para enviar publicidad no solicitada ni serán cedidos a terceros salvo obligación legal.
-</p>
-
-</div>
-
-<div class="section">
-
-<h2>3. Tecnologías y automatización</h2>
-
-<p>
-Esta web utiliza herramientas tecnológicas avanzadas para procesar solicitudes y automatizar procesos internos.
-</p>
-
-<p>
-Al enviar el formulario, tus datos pueden ser gestionados mediante plataformas seguras como <strong>n8n</strong> para ofrecer una respuesta rápida y eficiente.
-</p>
-
-<p>
-Todas las integraciones utilizadas forman parte de la infraestructura técnica necesaria para prestar el servicio correctamente.
-</p>
-
-</div>
-
-<div class="section">
-
-<h2>4. Derechos del usuario</h2>
-
-<p>
-Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición al tratamiento de tus datos personales en cualquier momento.
-</p>
-
-<p>
-Para ello, solo tienes que escribir a:
-<strong>mtz.automations@gmail.com</strong>
-</p>
-
-<p>
-Indicando en el asunto del correo:
-<strong>“Protección de Datos”</strong>.
-</p>
-
-</div>
-
-<div class="bottom">
-
-<div class="updated">
-Última actualización · Enero 2026
-</div>
-
-<a href="index.html" class="back">
-← Volver al inicio
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-/* REVEAL */
-
-const reveal = document.querySelectorAll('.reveal');
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.classList.add('active');
-
-}
-
-});
-
-},{
-threshold:.12
-});
-
-reveal.forEach(el => observer.observe(el));
-
-/* NAV */
-
-window.addEventListener('scroll',()=>{
-
-const nav = document.querySelector('nav');
-
-if(window.scrollY > 20){
-
-nav.style.background = 'rgba(8,12,25,.82)';
-nav.style.borderColor = 'rgba(255,255,255,.1)';
-
-}else{
-
-nav.style.background = 'rgba(10,15,31,.58)';
-nav.style.borderColor = 'rgba(255,255,255,.08)';
-
-}
-
-});
-
-</script>
+    <div class="bg-noise"></div>
+    <div class="bg-glow"></div>
+
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">MTZ</a>
+            <a href="index.html" class="nav-back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver al inicio
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="header-section">
+            <div class="hero-badge reveal"><span></span> Protección de datos</div>
+            <h1 class="hero-title reveal">Política de<br><span class="text-gradient">Privacidad</span></h1>
+            <p class="hero-desc reveal">Tu privacidad es importante para nosotros. En esta política explicamos qué datos recopilamos, cómo los utilizamos y cómo protegemos la información enviada a través de MTZ Automations.</p>
+        </div>
+
+        <div class="legal-card reveal">
+
+            <div class="legal-section">
+                <h2>1. Responsable del tratamiento</h2>
+                <p>El responsable del tratamiento de los datos personales recopilados a través de este sitio web es:</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <span class="info-label">Titular</span>
+                        <div class="info-value">Yeray Campaña</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">DNI</span>
+                        <div class="info-value">41688683X</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Email</span>
+                        <div class="info-value">mtz.automations@gmail.com</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Actividad</span>
+                        <div class="info-value">Automatización de procesos y desarrollo web</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>2. Finalidad del tratamiento</h2>
+                <p>Recopilamos tu nombre, correo electrónico y detalles del proyecto a través del formulario de contacto con la única finalidad de:</p>
+                <ul>
+                    <li>Responder solicitudes de auditoría o presupuesto.</li>
+                    <li>Analizar la viabilidad técnica de cada proyecto.</li>
+                    <li>Gestionar futuras comunicaciones relacionadas con el servicio solicitado.</li>
+                </ul>
+                <p style="margin-top: 16px;">No utilizaremos tus datos para enviar publicidad no solicitada ni serán cedidos a terceros salvo obligación legal.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>3. Tecnologías y automatización</h2>
+                <p>Esta web utiliza herramientas tecnológicas avanzadas para procesar solicitudes y automatizar procesos internos.</p>
+                <p>Al enviar el formulario, tus datos pueden ser gestionados mediante plataformas seguras como <strong>n8n</strong> para ofrecer una respuesta rápida y eficiente.</p>
+                <p>Todas las integraciones utilizadas forman parte de la infraestructura técnica necesaria para prestar el servicio correctamente.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>4. Derechos del usuario</h2>
+                <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición al tratamiento de tus datos personales en cualquier momento.</p>
+                <p>Para ello, solo tienes que escribir a: <br><strong>mtz.automations@gmail.com</strong></p>
+                <p>Indicando en el asunto del correo: <br><strong>“Protección de Datos”</strong>.</p>
+            </div>
+
+            <div class="card-footer">
+                <div class="updated-date">Última actualización · Enero 2026</div>
+                <a href="index.html" class="btn-primary">Volver al inicio</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // ANIMACIÓN REVEAL
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        reveals.forEach(el => observer.observe(el));
+
+        // EFECTO NAVBAR SCROLL
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
 </html>
