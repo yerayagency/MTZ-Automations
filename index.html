@@ -23,6 +23,7 @@
         --glow-purple: rgba(99, 102, 241, 0.4);
         --font-main: 'Inter', sans-serif;
         --nav-height: 80px;
+        --radius: 28px; /* Curvas más pronunciadas */
     }
 
     /* RESET & BASE */
@@ -51,7 +52,18 @@
 
     /* UTILITIES */
     .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-    .text-gradient { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; padding-right: 0.1em; }
+    
+    /* FIX: Añadido padding-bottom para que letras como la 'g', 'p', 'y' no se corten */
+    .text-gradient { 
+        background: var(--gradient-primary); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        display: inline-block; 
+        padding-right: 0.1em; 
+        padding-bottom: 0.15em; 
+        line-height: 1.1; 
+    }
+    
     .section-padding { padding: 140px 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
     
     /* REVEAL ANIMATIONS */
@@ -70,7 +82,6 @@
     .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
     .nav-links a:hover { color: var(--text-main); }
     
-    /* Botón nav transparente */
     .nav-btn {
         background: transparent; color: var(--text-main); font-weight: 600; font-size: 0.95rem;
         text-decoration: none; transition: color 0.3s ease, transform 0.3s ease; border: none; outline: none;
@@ -82,7 +93,7 @@
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-color); border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
     .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 10px var(--accent-blue); }
-    .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 24px; }
+    .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 24px; }
     .hero-desc { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; max-width: 540px; }
     .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 48px; }
     
@@ -119,11 +130,11 @@
 
     /* SERVICES SECTION */
     .section-header { text-align: center; margin-bottom: 80px; max-width: 800px; margin-inline: auto; }
-    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; }
+    .section-title { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; }
     .section-subtitle { font-size: 1.1rem; color: var(--text-muted); }
     
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1.5; } /* Center last 2 cards */
+    .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1.5; }
     
     /* GLOW CARDS */
     .glow-card { position: relative; background: rgba(255, 255, 255, 0.015); border-radius: var(--radius); overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04); transition: transform 0.3s ease; }
@@ -133,7 +144,7 @@
     .glow-card:hover::before, .glow-card:hover::after { opacity: 1; }
     
     .glow-content { position: relative; z-index: 3; padding: 40px; height: 100%; display: flex; flex-direction: column; gap: 12px; }
-    .card-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--accent-blue); transition: transform 0.3s ease, background 0.3s ease; }
+    .card-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--accent-blue); transition: transform 0.3s ease, background 0.3s ease; }
     .glow-card:hover .card-icon { transform: scale(1.1); background: rgba(14, 165, 233, 0.1); border-color: var(--accent-blue); }
     .glow-content h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; color: var(--text-main); }
     .glow-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; flex-grow: 1; }
@@ -166,14 +177,14 @@
     
     .process-cta { margin-top: 60px; }
 
-    /* PROJECTS SECTION (Ajustada para usar Glow Cards y diseño discreto) */
+    /* PROJECTS SECTION (Limpiado y adaptado) */
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .project-metric { font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; letter-spacing: -1px; }
     .project-metric span { font-size: 0.8rem; color: var(--accent-blue); font-weight: 700; vertical-align: middle; margin-left: 8px; text-transform: uppercase; letter-spacing: 1px;}
 
     /* CTA SECTION */
     #cta { text-align: center; position: relative; overflow: hidden; }
-    .cta-container { max-width: 800px; margin: 0 auto; background: var(--surface-color); padding: 80px 40px; border-radius: 32px; border: 1px solid var(--border-color); position: relative; z-index: 2; box-shadow: 0 20px 80px rgba(0,0,0,0.5); }
+    .cta-container { max-width: 800px; margin: 0 auto; background: var(--surface-color); padding: 80px 40px; border-radius: var(--radius); border: 1px solid var(--border-color); position: relative; z-index: 2; box-shadow: 0 20px 80px rgba(0,0,0,0.5); }
     .cta-container::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-blue), transparent); }
     .cta-tag { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-purple); margin-bottom: 24px; display: block; }
     .cta-title { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 32px; }
@@ -208,15 +219,15 @@
     }
     
     @media (max-width: 768px) {
-        /* General y Separaciones */
-        .container { padding: 0 20px; }
+        /* General y Separaciones más holgadas para que no toque los bordes */
+        .container { padding: 0 32px; }
         .section-padding { padding: 80px 0; min-height: auto; }
         .section-header { margin-bottom: 40px; text-align: center; }
         .section-title { font-size: 2rem; }
         .section-subtitle { font-size: 1rem; }
         
         /* Navegación */
-        nav { padding: 20px 16px; }
+        nav { padding: 20px 24px; }
         .nav-links { display: none; }
         .nav-logo { font-size: 1.1rem; }
         .nav-btn { padding: 8px 16px; font-size: 0.85rem; }
@@ -225,7 +236,7 @@
         #hero { padding-top: 100px; }
         .hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .hero-title { font-size: 2.2rem; letter-spacing: -1px; margin-bottom: 16px; }
-        .hero-desc { font-size: 1rem; margin-bottom: 32px; padding: 0 10px; }
+        .hero-desc { font-size: 1rem; margin-bottom: 32px; padding: 0; }
         .hero-buttons { flex-direction: column; width: 100%; gap: 12px; margin-bottom: 32px; }
         .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
         .hero-metrics { flex-direction: column; gap: 12px; align-items: center; width: 100%; }
@@ -235,10 +246,10 @@
         .ai-core-container { width: 220px; height: 220px; transform: scale(0.9); }
         .ai-orb { width: 80px; height: 80px; }
         
-        /* Grids a 1 columna y reducción de paddings en tarjetas */
-        .services-grid, .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+        /* Grids a 1 columna y reducción de paddings internos en tarjetas */
+        .services-grid, .projects-grid { grid-template-columns: 1fr; gap: 24px; }
         .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1; }
-        .glow-content { padding: 24px; } /* Padding reducido en móvil */
+        .glow-content { padding: 28px; } /* Más aire por dentro */
         
         /* Marquee Separador */
         .marquee-wrapper { padding: 30px 0; }
@@ -256,15 +267,28 @@
         .project-metric { font-size: 1.8rem; }
         
         /* CTA Final */
-        .cta-container { padding: 40px 20px; }
+        .cta-container { padding: 40px 24px; }
         .cta-title { font-size: 2rem; margin-bottom: 24px; }
         .cta-list { flex-direction: column; align-items: center; gap: 16px; margin-bottom: 32px; }
         .cta-list-item { text-align: center; }
         .btn-massive { width: 100%; padding: 16px 20px; font-size: 1.05rem; text-align: center; }
         
-        /* Footer */
+        /* Footer arreglado para estar en línea */
         .footer-content { flex-direction: column; justify-content: center; text-align: center; gap: 16px; }
-        .footer-links { flex-direction: column; gap: 12px; }
+        .footer-links { flex-direction: row; justify-content: center; gap: 24px; width: 100%; }
+    }
+    
+    @media (max-width: 480px) {
+        .container { padding: 0 20px; } /* Mantiene un margen mínimo en móviles muy pequeños */
+        .nav-content { padding: 0; }
+        .nav-logo { font-size: 1rem; }
+        .nav-btn { padding: 8px 14px; font-size: 0.8rem; }
+        
+        .hero-badge { font-size: 0.7rem; padding: 6px 12px; }
+        .hero-title { font-size: 2.2rem; }
+        .section-title { font-size: 1.8rem; }
+        
+        .ai-core-container { width: 220px; height: 220px; }
     }
 </style>
 </head>
@@ -273,6 +297,7 @@
     <div class="bg-noise"></div>
     <div class="bg-glow"></div>
 
+    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="container nav-content">
             <a href="#" class="nav-logo">MTZ Automations</a>
@@ -285,6 +310,7 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <header id="hero" class="container">
         <div class="hero-grid">
             <div class="hero-text reveal">
@@ -324,6 +350,7 @@
         </div>
     </header>
 
+    <!-- SERVICIOS SECTION -->
     <section id="servicios" class="section-padding container">
         <div class="section-header reveal">
             <h2 class="section-title">Infraestructura tecnológica para <span class="text-gradient">dominar tu sector.</span></h2>
@@ -331,6 +358,7 @@
         </div>
 
         <div class="services-grid">
+            <!-- Servicio 1 -->
             <div class="glow-card interactive-card reveal">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -340,6 +368,7 @@
                     <p class="card-desc">Sitios ultrarrápidos, optimizados para SEO y estructurados milimétricamente con un único objetivo: convertir visitantes en clientes.</p>
                 </div>
             </div>
+            <!-- Servicio 2 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.1s;">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -349,6 +378,7 @@
                     <p class="card-desc">Interfaces premium, intuitivas y estéticas que guían al usuario sin esfuerzo, elevando la percepción de valor de tu marca.</p>
                 </div>
             </div>
+            <!-- Servicio 3 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.2s;">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -358,15 +388,17 @@
                     <p class="card-desc">Conexión de herramientas, flujos automáticos y sistemas CRM para eliminar horas de trabajo manual y evitar errores humanos.</p>
                 </div>
             </div>
+            <!-- Servicio 4 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.3s;">
                 <div class="glow-content">
                     <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2-2z"></path></svg>
                     </div>
                     <h3 class="card-title">Chatbots e IA</h3>
                     <p class="card-desc">Asistentes conversacionales avanzados capaces de atender dudas, cualificar leads y agendar reuniones 24/7 sin intervención humana.</p>
                 </div>
             </div>
+            <!-- Servicio 5 -->
             <div class="glow-card interactive-card reveal" style="transition-delay: 0.4s;">
                 <div class="glow-content">
                     <div class="card-icon">
@@ -379,8 +411,10 @@
         </div>
     </section>
 
+    <!-- MARQUEE SEPARATOR -->
     <div class="marquee-wrapper">
         <div class="marquee-content">
+            <!-- Bloque 1 -->
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Productividad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Ventas</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
@@ -388,15 +422,17 @@
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Menos trabajo manual</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Más crecimiento</div>
             
+            <!-- Duplicado para efecto infinito -->
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Productividad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Ventas</div>
-            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 13 9 20 9"/><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg> Escalabilidad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Menos trabajo manual</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Más crecimiento</div>
         </div>
     </div>
 
+    <!-- PROCESS SECTION -->
     <section id="proceso" class="section-padding container">
         <div class="section-header reveal">
             <h2 class="section-title">Ingeniería de precisión en <span class="text-gradient">4 fases.</span></h2>
@@ -453,6 +489,7 @@
                 </div>
             </div>
 
+            <!-- Visual process timeline for desktop -->
             <div class="process-visual">
                 <div class="timeline-container">
                     <div class="timeline-line"></div>
@@ -475,6 +512,7 @@
         </div>
     </section>
 
+    <!-- PROJECTS SECTION (Limpio y coherente) -->
     <section id="proyectos" class="section-padding container">
         <div class="section-header reveal">
             <h2 class="section-title">Resultados impulsados por <span class="text-gradient">datos y código.</span></h2>
@@ -517,6 +555,7 @@
         </div>
     </section>
 
+    <!-- CTA FINAL SECTION -->
     <section id="cta" class="section-padding container">
         <div class="cta-container reveal">
             <span class="cta-tag">Último paso</span>
@@ -541,6 +580,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">MTZ Automations</div>
