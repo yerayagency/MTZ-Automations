@@ -76,7 +76,7 @@
     input:focus, select:focus, textarea:focus { border-color: var(--accent-blue); background: rgba(14, 165, 233, 0.05); box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); }
     select option { background-color: #12121a; color: #ffffff; }
     
-    .submit-btn { margin-top: 16px; width: 100%; background: var(--text-main); color: var(--bg-color); border: none; border-radius: 12px; padding: 18px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    .submit-btn { margin-top: 16px; width: 100%; background: var(--text-main); color: var(--bg-color); border: none; border-radius: 12px; padding: 18px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s; }
     .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,255,255,0.15); }
 
     /* TEXTO LEGAL DEBAJO DEL BOTÓN */
@@ -135,7 +135,7 @@
     <div class="bg-glow"></div>
 
     <nav>
-        <a href="index.html" class="nav-logo">MTZ Automations</a>
+        <a href="index.html" class="nav-logo">MTZ</a>
         <a href="index.html" class="nav-back">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             Volver a inicio
@@ -149,7 +149,7 @@
             </div>
             <p class="hero-subtitle">Hablemos de tu negocio, tus objetivos y cómo nuestra tecnología puede hacerte escalar sin aumentar tu carga de trabajo.</p>
 
-            <form class="form-card" onsubmit="event.preventDefault(); alert('Formulario simulado enviado con éxito.');">
+            <form id="auditoriaForm" class="form-card">
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="nombre">Nombre / Empresa *</label>
@@ -178,11 +178,12 @@
                         <textarea id="detalles" required placeholder="Cuéntanos un poco sobre tu situación actual, qué te gustaría automatizar o mejorar, y qué objetivos tienes..."></textarea>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">Solicitar Auditoría</button>
+                <button type="submit" id="submitBtn" class="submit-btn">Solicitar Auditoría</button>
                 <p class="legal-disclaimer">Al solicitar la auditoría, aceptas nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
             </form>
         </section>
 
+        <!-- SECCIÓN: ¿POR QUÉ RESERVAR? -->
         <section class="value-section">
             <span class="section-tag">El primer paso</span>
             <h2 class="section-title">¿Por qué reservar una auditoría?</h2>
@@ -213,6 +214,7 @@
             </div>
         </section>
 
+        <!-- SECCIÓN: DESCUBRIRÁS -->
         <section class="value-section" style="padding-top: 0;">
             <h2 class="section-title">En esta llamada descubrirás:</h2>
             <div class="cards-grid">
@@ -238,10 +240,12 @@
         </section>
     </main>
 
+    <!-- INTERACTIVE CANVAS TEXT -->
     <section class="particle-section">
         <canvas id="particleCanvas"></canvas>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">MTZ Automations</div>
@@ -254,6 +258,66 @@
     </footer>
 
     <script>
+        // LÓGICA DEL FORMULARIO HACIA N8N WEBHOOK
+        document.getElementById('auditoriaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+
+            // Cambiar estado a cargando
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+
+            // Recopilar datos
+            const data = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('correo').value,
+                servicio: document.getElementById('servicio').value,
+                detalles: document.getElementById('detalles').value,
+                fecha: new Date().toISOString()
+            };
+
+            try {
+                // Enviar al webhook de n8n
+                const res = await fetch('https://yerayagency.app.n8n.cloud/webhook/Portfolio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if(res.ok) {
+                    btn.innerText = 'Solicitud enviada ✓';
+                    btn.style.background = '#10b981'; // Verde éxito
+                    btn.style.color = '#ffffff';
+                    this.reset(); // Limpiar el formulario
+
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.disabled = false;
+                    }, 4000);
+                } else {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+            } catch (error) {
+                btn.innerText = 'Error de conexión';
+                btn.style.background = '#ef4444'; // Rojo error
+                btn.style.color = '#ffffff';
+
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.disabled = false;
+                }, 3000);
+            }
+        });
+
         // EFECTO DE ESCRITURA (Typing Effect)
         const text = "Consultoría personalizada";
         const typewriterElement = document.getElementById('typewriter');
