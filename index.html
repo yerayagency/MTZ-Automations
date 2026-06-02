@@ -82,7 +82,7 @@
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-color); border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
     .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 10px var(--accent-blue); }
-    .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 24px; }
+    .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 24px; }
     .hero-desc { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; max-width: 540px; }
     .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 48px; }
     
@@ -119,22 +119,24 @@
 
     /* SERVICES SECTION */
     .section-header { text-align: center; margin-bottom: 80px; max-width: 800px; margin-inline: auto; }
-    .section-title { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; }
     .section-subtitle { font-size: 1.1rem; color: var(--text-muted); }
     
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .services-grid .card:nth-child(4), .services-grid .card:nth-child(5) { grid-column: span 1.5; }
+    .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1.5; } /* Center last 2 cards */
     
-    .card { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; transition: border-color 0.3s ease, transform 0.3s ease; display: flex; flex-direction: column; }
-    .card::before { content: ''; position: absolute; top: var(--mouse-y, 0); left: var(--mouse-x, 0); transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1; }
-    .card:hover { border-color: var(--border-highlight); transform: translateY(-4px); }
-    .card:hover::before { opacity: 1; }
-    .card > * { position: relative; z-index: 2; }
+    /* GLOW CARDS */
+    .glow-card { position: relative; background: rgba(255, 255, 255, 0.015); border-radius: var(--radius); overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04); transition: transform 0.3s ease; }
+    .glow-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient( 500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.05), transparent 40% ); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1; }
+    .glow-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: radial-gradient( 300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.4), transparent 40% ); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 2; }
+    .glow-card:hover { transform: translateY(-4px); }
+    .glow-card:hover::before, .glow-card:hover::after { opacity: 1; }
     
-    .card-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--accent-blue); transition: transform 0.3s ease, background 0.3s ease; }
-    .card:hover .card-icon { transform: scale(1.1); background: rgba(14, 165, 233, 0.1); border-color: var(--accent-blue); }
-    .card-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
-    .card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; flex-grow: 1; }
+    .glow-content { position: relative; z-index: 3; padding: 40px; height: 100%; display: flex; flex-direction: column; gap: 12px; }
+    .card-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--accent-blue); transition: transform 0.3s ease, background 0.3s ease; }
+    .glow-card:hover .card-icon { transform: scale(1.1); background: rgba(14, 165, 233, 0.1); border-color: var(--accent-blue); }
+    .glow-content h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; color: var(--text-main); }
+    .glow-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; flex-grow: 1; }
 
     /* MARQUEE SEPARATOR */
     .marquee-wrapper { width: 100%; overflow: hidden; padding: 60px 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02) 50%, transparent); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); display: flex; }
@@ -164,34 +166,23 @@
     
     .process-cta { margin-top: 60px; }
 
-    /* PROJECTS SECTION */
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-    .project-card { border-radius: 20px; background: var(--surface-color); border: 1px solid var(--border-color); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, border-color 0.3s ease; }
-    .project-card:hover { transform: translateY(-8px); border-color: var(--border-highlight); }
-    .project-visual { height: 240px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border-color); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .project-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--surface-color), transparent); opacity: 0.8; }
-    .prj-1 .prj-shape { width: 100px; height: 100px; border-radius: 20px; background: linear-gradient(45deg, #10b981, #3b82f6); transform: rotate(15deg); }
-    .prj-2 .prj-shape { width: 120px; height: 60px; border-radius: 100px; background: linear-gradient(45deg, #f59e0b, #ef4444); }
-    .prj-3 .prj-shape { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(45deg, #8b5cf6, #d946ef); }
-    
-    .project-content { padding: 32px; display: flex; flex-direction: column; flex-grow: 1; }
-    .project-metric { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px; letter-spacing: -1px; }
-    .project-metric span { font-size: 1rem; color: var(--accent-blue); font-weight: 600; vertical-align: middle; margin-left: 4px; }
-    .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
-    .project-desc { color: var(--text-muted); font-size: 0.9rem; }
+    /* PROJECTS SECTION (Ajustada para usar Glow Cards y diseño discreto) */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .project-metric { font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; letter-spacing: -1px; }
+    .project-metric span { font-size: 0.8rem; color: var(--accent-blue); font-weight: 700; vertical-align: middle; margin-left: 8px; text-transform: uppercase; letter-spacing: 1px;}
 
     /* CTA SECTION */
     #cta { text-align: center; position: relative; overflow: hidden; }
     .cta-container { max-width: 800px; margin: 0 auto; background: var(--surface-color); padding: 80px 40px; border-radius: 32px; border: 1px solid var(--border-color); position: relative; z-index: 2; box-shadow: 0 20px 80px rgba(0,0,0,0.5); }
     .cta-container::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-blue), transparent); }
     .cta-tag { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-purple); margin-bottom: 24px; display: block; }
-    .cta-title { font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 32px; }
+    .cta-title { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 32px; }
     .cta-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 48px; }
     .cta-list-item { display: flex; align-items: center; gap: 8px; color: #d1d5db; font-size: 0.95rem; font-weight: 500; }
     .cta-list-item svg { width: 20px; height: 20px; color: var(--accent-blue); }
     
     .btn-massive {
-        font-size: 1.25rem; padding: 20px 48px; border-radius: 16px; background: var(--text-main); color: var(--bg-color); font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        font-size: 1.1rem; padding: 20px 40px; border-radius: 16px; background: var(--text-main); color: var(--bg-color); font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255,255,255,0.1);
     }
     .btn-massive:hover { transform: scale(1.02); box-shadow: 0 15px 40px rgba(255,255,255,0.2); }
 
@@ -205,46 +196,49 @@
     .footer-copy { color: var(--text-muted); font-size: 0.85rem; width: 100%; text-align: center; margin-top: 40px; }
 
     /* =========================================
-       RESPONSIVE REGLAS MEJORADAS (MÓVIL / TABLET)
+       RESPONSIVE MEJORADO Y ESPACIADOS (MÓVIL)
        ========================================= */
        
     @media (max-width: 1024px) {
         .hero-grid, .process-container { grid-template-columns: 1fr; gap: 40px; }
         .hero-visual { height: 400px; }
-        .services-grid { grid-template-columns: repeat(2, 1fr); }
-        .services-grid .card:nth-child(4), .services-grid .card:nth-child(5) { grid-column: span 1; }
-        .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        .services-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1; }
         .process-visual { display: none; } 
     }
     
     @media (max-width: 768px) {
-        /* General y Utilidades */
+        /* General y Separaciones */
+        .container { padding: 0 20px; }
         .section-padding { padding: 80px 0; min-height: auto; }
         .section-header { margin-bottom: 40px; text-align: center; }
-        .section-title { font-size: 2.2rem; }
-        .card { padding: 24px; }
+        .section-title { font-size: 2rem; }
+        .section-subtitle { font-size: 1rem; }
         
         /* Navegación */
-        nav .container { padding: 0 16px; }
+        nav { padding: 20px 16px; }
         .nav-links { display: none; }
         .nav-logo { font-size: 1.1rem; }
         .nav-btn { padding: 8px 16px; font-size: 0.85rem; }
         
         /* Hero Section */
+        #hero { padding-top: 100px; }
         .hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .hero-desc { text-align: center; font-size: 1.05rem; }
-        .hero-title { font-size: 2.5rem; letter-spacing: -1px; }
+        .hero-title { font-size: 2.2rem; letter-spacing: -1px; margin-bottom: 16px; }
+        .hero-desc { font-size: 1rem; margin-bottom: 32px; padding: 0 10px; }
         .hero-buttons { flex-direction: column; width: 100%; gap: 12px; margin-bottom: 32px; }
         .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
         .hero-metrics { flex-direction: column; gap: 12px; align-items: center; width: 100%; }
         
         /* Efecto Visual IA Responsivo */
-        .hero-visual { height: 320px; }
-        .ai-core-container { width: 260px; height: 260px; transform: scale(0.9); }
+        .hero-visual { height: 280px; margin-top: -20px; }
+        .ai-core-container { width: 220px; height: 220px; transform: scale(0.9); }
+        .ai-orb { width: 80px; height: 80px; }
         
-        /* Grids a 1 columna */
-        .services-grid, .projects-grid { grid-template-columns: 1fr; }
-        .services-grid .card:nth-child(4), .services-grid .card:nth-child(5) { grid-column: span 1; }
+        /* Grids a 1 columna y reducción de paddings en tarjetas */
+        .services-grid, .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+        .services-grid .glow-card:nth-child(4), .services-grid .glow-card:nth-child(5) { grid-column: span 1; }
+        .glow-content { padding: 24px; } /* Padding reducido en móvil */
         
         /* Marquee Separador */
         .marquee-wrapper { padding: 30px 0; }
@@ -252,40 +246,25 @@
         
         /* Proceso */
         .process-container { gap: 40px; }
+        .process-steps { gap: 32px; }
         .step { padding-left: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .step-number { position: static; writing-mode: horizontal-tb; transform: none; margin-bottom: 12px; font-size: 1.2rem; }
         .step-tags { justify-content: center; }
-        .process-cta { text-align: center; }
+        .process-cta { text-align: center; margin-top: 30px;}
         
-        /* Proyectos */
-        .project-visual { height: 200px; }
-        .project-content { padding: 24px; }
-        .project-metric { font-size: 2rem; }
+        /* Proyectos (Ajuste fuentes) */
+        .project-metric { font-size: 1.8rem; }
         
         /* CTA Final */
         .cta-container { padding: 40px 20px; }
-        .cta-title { font-size: 2.2rem; margin-bottom: 24px; }
+        .cta-title { font-size: 2rem; margin-bottom: 24px; }
         .cta-list { flex-direction: column; align-items: center; gap: 16px; margin-bottom: 32px; }
         .cta-list-item { text-align: center; }
-        .btn-massive { width: 100%; padding: 16px 20px; font-size: 1.1rem; text-align: center; }
+        .btn-massive { width: 100%; padding: 16px 20px; font-size: 1.05rem; text-align: center; }
         
         /* Footer */
         .footer-content { flex-direction: column; justify-content: center; text-align: center; gap: 16px; }
         .footer-links { flex-direction: column; gap: 12px; }
-    }
-    
-    @media (max-width: 480px) {
-        .nav-content { padding: 0; }
-        .nav-logo { font-size: 1rem; }
-        .nav-btn { padding: 8px 14px; font-size: 0.8rem; }
-        
-        .hero-badge { font-size: 0.7rem; padding: 6px 12px; }
-        .hero-title { font-size: 2.2rem; }
-        .section-title { font-size: 1.8rem; }
-        
-        .ai-core-container { width: 220px; height: 220px; }
-        .ai-orb { width: 80px; height: 80px; }
-        .card { padding: 20px; }
     }
 </style>
 </head>
@@ -352,40 +331,50 @@
         </div>
 
         <div class="services-grid">
-            <div class="card reveal interactive-card">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <div class="glow-card interactive-card reveal">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3 class="card-title">Desarrollo Web</h3>
+                    <p class="card-desc">Sitios ultrarrápidos, optimizados para SEO y estructurados milimétricamente con un único objetivo: convertir visitantes en clientes.</p>
                 </div>
-                <h3 class="card-title">Desarrollo Web</h3>
-                <p class="card-desc">Sitios ultrarrápidos, optimizados para SEO y estructurados milimétricamente con un único objetivo: convertir visitantes en clientes.</p>
             </div>
-            <div class="card reveal interactive-card" style="transition-delay: 0.1s;">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            <div class="glow-card interactive-card reveal" style="transition-delay: 0.1s;">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                    </div>
+                    <h3 class="card-title">Diseño UI/UX</h3>
+                    <p class="card-desc">Interfaces premium, intuitivas y estéticas que guían al usuario sin esfuerzo, elevando la percepción de valor de tu marca.</p>
                 </div>
-                <h3 class="card-title">Diseño UI/UX</h3>
-                <p class="card-desc">Interfaces premium, intuitivas y estéticas que guían al usuario sin esfuerzo, elevando la percepción de valor de tu marca.</p>
             </div>
-            <div class="card reveal interactive-card" style="transition-delay: 0.2s;">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <div class="glow-card interactive-card reveal" style="transition-delay: 0.2s;">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <h3 class="card-title">Automatizaciones Inteligentes</h3>
+                    <p class="card-desc">Conexión de herramientas, flujos automáticos y sistemas CRM para eliminar horas de trabajo manual y evitar errores humanos.</p>
                 </div>
-                <h3 class="card-title">Automatizaciones Inteligentes</h3>
-                <p class="card-desc">Conexión de herramientas, flujos automáticos y sistemas CRM para eliminar horas de trabajo manual y evitar errores humanos.</p>
             </div>
-            <div class="card reveal interactive-card" style="transition-delay: 0.3s;">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <div class="glow-card interactive-card reveal" style="transition-delay: 0.3s;">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <h3 class="card-title">Chatbots e IA</h3>
+                    <p class="card-desc">Asistentes conversacionales avanzados capaces de atender dudas, cualificar leads y agendar reuniones 24/7 sin intervención humana.</p>
                 </div>
-                <h3 class="card-title">Chatbots e IA</h3>
-                <p class="card-desc">Asistentes conversacionales avanzados capaces de atender dudas, cualificar leads y agendar reuniones 24/7 sin intervención humana.</p>
             </div>
-            <div class="card reveal interactive-card" style="transition-delay: 0.4s;">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <div class="glow-card interactive-card reveal" style="transition-delay: 0.4s;">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <h3 class="card-title">Lanzamiento y Soporte</h3>
+                    <p class="card-desc">Despliegue seguro, configuración de hosting/dominio, mantenimiento técnico proactivo y evolución continua del sistema.</p>
                 </div>
-                <h3 class="card-title">Lanzamiento y Soporte</h3>
-                <p class="card-desc">Despliegue seguro, configuración de hosting/dominio, mantenimiento técnico proactivo y evolución continua del sistema.</p>
             </div>
         </div>
     </section>
@@ -401,7 +390,7 @@
             
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Productividad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Ventas</div>
-            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Automatización</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 13 9 20 9"/><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg> Escalabilidad</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Menos trabajo manual</div>
             <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Más crecimiento</div>
@@ -493,25 +482,33 @@
         </div>
 
         <div class="projects-grid">
-            <div class="project-card reveal interactive-card prj-1">
-                <div class="project-visual"><div class="prj-shape"></div></div>
-                <div class="project-content">
+            <div class="glow-card interactive-card reveal">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
                     <div class="project-metric">+250%<span>conversiones</span></div>
                     <h3 class="project-title">E-commerce Optimizado</h3>
                     <p class="project-desc">Rediseño completo del embudo de ventas y automatización de carritos abandonados. Experiencia de compra sin fricción que disparó la retención.</p>
                 </div>
             </div>
-            <div class="project-card reveal interactive-card prj-2" style="transition-delay: 0.1s;">
-                <div class="project-visual"><div class="prj-shape"></div></div>
-                <div class="project-content">
+            
+            <div class="glow-card interactive-card reveal" style="transition-delay: 0.1s;">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
                     <div class="project-metric">+1000<span>leads al mes</span></div>
                     <h3 class="project-title">Landing de Servicios B2B</h3>
                     <p class="project-desc">Arquitectura de captación premium combinada con un flujo de nutrición automático. Calificación de clientes potenciales 100% en piloto automático.</p>
                 </div>
             </div>
-            <div class="project-card reveal interactive-card prj-3" style="transition-delay: 0.2s;">
-                <div class="project-visual"><div class="prj-shape"></div></div>
-                <div class="project-content">
+            
+            <div class="glow-card interactive-card reveal" style="transition-delay: 0.2s;">
+                <div class="glow-content">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
                     <div class="project-metric">-60%<span>consultas repetitivas</span></div>
                     <h3 class="project-title">Portal con Chatbot IA</h3>
                     <p class="project-desc">Implementación de un asistente virtual entrenado con la base de conocimientos de la empresa. Soporte técnico instantáneo 24/7 y derivación inteligente.</p>
@@ -573,7 +570,7 @@
         
         hero.addEventListener('mousemove', (e) => {
             if(window.innerWidth > 1024) {
-                const x = (e.clientX / window.innerWidth - 0.5) * 20; // max 10deg
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
                 const y = (e.clientY / window.innerHeight - 0.5) * -20;
                 aiCore.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
             }
